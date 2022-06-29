@@ -1,0 +1,23 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns4="http://www.cartaodecidadao.pt/ccc/commons/messages/Types" xmlns:ns5="http://www.w3.org/2000/09/xmldsig#" xmlns:ns6="http://uri.etsi.org/01903/v1.3.2#" xmlns:ns7="http://www.cartaodecidadao.pt/ccc/commons/messages/SVG" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:ns2="http://www.cartaodecidadao.pt/ccc/sccc/messages/AttributeClientService" xmlns:ns3="http://www.cartaodecidadao.pt/ccc/commons/messages/Attribute" xmlns:ns1="http://www.cartaodecidadao.pt/ccc/tipos/SCAPSignature" xmlns:ns8="http://www.cartaodecidadao.pt/ccc/sccc/services/AttributeSupplierService" xmlns:ns9="http://www.cartaodecidadao.pt/ccc/sccc/messages/AttributeSupplierService">
+	<SOAP-ENV:Body>
+		<ns1:SignatureRequest>
+			<ns1:AppId>37a5c98a-4a7c-4da6-9be2-0605d2db0ac7</ns1:AppId>
+			<ns1:ProcessId>bd5abc28-3224-4615-8e09-5761e6eef2c0</ns1:ProcessId>
+			<ns1:TOTP>558747</ns1:TOTP>
+			<ns1:Hash>MDEwDQYJYIZIAWUDBAIBBQAEIHUCYbjf9SX8s46ehZcVpiQXmn7qtdwPZp032CqXkdY3</ns1:Hash>
+			<ns1:Transaction>
+				<ns1:TransactionId>1</ns1:TransactionId>
+				<ns1:AttributeSupplier>
+					<ns1:Id>SCAP</ns1:Id>
+					<ns1:Name>Sistema de Certificação de Atributos Profissionais</ns1:Name>
+					<ns1:Type>INSTITUITION</ns1:Type>
+				</ns1:AttributeSupplier>
+				<ns1:MainAttribute>
+					<ns1:AttributeID>SCAP_eSeal</ns1:AttributeID>
+					<ns1:Description>Atributo SCAP</ns1:Description>
+				</ns1:MainAttribute>
+				<ns1:AttributeSupplierCertificateChain>-----BEGIN CERTIFICATE-----&#xA;MIIDnjCCAoagAwIBAgIEATMzfzANBgkqhkiG9w0BAQUFADCBhjELMAkGA1UEBhMC&#xA;UFQxDzANBgNVBAgTBkxpc2JvbjEPMA0GA1UEBxMGTGlzYm9uMQwwCgYDVQQKEwNB&#xA;TUExCzAJBgNVBAsTAklUMSAwHgYDVQQDExdQcmVwcm9kIERTUyBDZXJ0aWZpY2F0&#xA;ZTEYMBYGCSqGSIb3DQEJARYJaXRAYW1hLnB0MB4XDTE3MTEwMjAwMDAwMFoXDTIw&#xA;MTEzMDAwMDAwMFowgYYxCzAJBgNVBAYTAlBUMQ8wDQYDVQQIEwZMaXNib24xDzAN&#xA;BgNVBAcTBkxpc2JvbjEMMAoGA1UEChMDQU1BMQswCQYDVQQLEwJJVDEgMB4GA1UE&#xA;AxMXUHJlcHJvZCBEU1MgQ2VydGlmaWNhdGUxGDAWBgkqhkiG9w0BCQEWCWl0QGFt&#xA;YS5wdDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAOmDfrrZS4sEpi54&#xA;bfK+zZyBVN66lZcoVf5So7JlbVvDAVhBjO9gtx15wMv65cYpQJP2xNa5U6jnKE2O&#xA;kM2WwYc/xYvvhLtYp/ztgmz4pDdWhf1u2uz1nduTljyTgGs2UbMtG7ZngUJ0yDXl&#xA;Kgfug0XmYjy6r6WMVMRKF+Mue85K//c4/yBQVGnkjlzbSUyMj04gvQ+e2Brz0hqy&#xA;6WTidUBDRWyGki8oClRanU4OOKpkUhaFMt5vF5s8ZHpmvAEHs/icTJVpXVM1k9Eg&#xA;aoRUPPPhmkyBo6pJGYRPplKygOc6Z3yWiJlj0kmdOyKwdA2JhpgE4M3lgRyE3Xzl&#xA;ExUWtc0CAwEAAaMSMBAwDgYDVR0PAQH/BAQDAgIEMA0GCSqGSIb3DQEBBQUAA4IB&#xA;AQCrPokiE/ys5SaPAOzsq6yxUFdbs3q4poOnHQhUdCnhIRf/xFz/WWSHkkAKNLvW&#xA;5sV2GvsfBfUTG/3GFDfrM3o/GQa2s9BRnE/BP+KFhX82f5zErTH9AQKoH/y9VPbY&#xA;9/J/qsB/4iKKBgP/w8H1ZyJGSWWbg+B9PbHiQRPZjPYj2J3PZmKAAWy5bZPwS/RM&#xA;YWdCoZ05jzqLJhoDzajSrAVQ93pS770tV+rZYXUaQZXHRr2+mgj9AHiYPaFecDv5&#xA;pkRqXMyKBOxtA6lyzPeMQzBs+kW4o07t+Yp6uDZO08kryvBhzJUQIHZ222EIRZzc&#xA;ATvInVQrk/bljDnpWBoNtZaU&#xA;-----END CERTIFICATE-----&#xA;</ns1:AttributeSupplierCertificateChain>
+			</ns1:Transaction>
+		</ns1:SignatureRequest>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

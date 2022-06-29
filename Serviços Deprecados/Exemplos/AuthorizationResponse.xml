@@ -1,0 +1,105 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+	<soap:Body>
+		<AuthorizationResponse xmlns="http://www.cartaodecidadao.pt/ccc/tipos/SCAPSignature">
+			<Status>
+				<Code>00</Code>
+				<Message>Success</Message>
+			</Status>
+			<ProcessId>bd5abc28-3224-4615-8e09-5761e6eef2c0</ProcessId>
+			<TransactionList>
+				<Transaction>
+					<TransactionId>0</TransactionId>
+					<AttributeSupplier>
+						<Id>http://interop.gov.pt/SCAP/AMA</Id>
+						<Name>Agência para a Modernização Administrativa</Name>
+						<Type>INSTITUTION</Type>
+					</AttributeSupplier>
+					<MainAttribute>
+						<AttributeID>http://interop.gov.pt/SCAP/AMA/Funcionario</AttributeID>
+						<Description>Consultor eID</Description>
+						<SubAttributeList>
+							<SubAttribute>
+								<AttributeID>http://interop.gov.pt/SCAP/AMA/Funcionario/AreaOrganica</AttributeID>
+								<Description>Área Orgânica</Description>
+								<Value>eID</Value>
+							</SubAttribute>
+							<SubAttribute>
+								<AttributeID>http://interop.gov.pt/SCAP/AMA/Funcionario/Mail</AttributeID>
+								<Description>E-mail</Description>
+								<Value>tiago.bras@ama.pt</Value>
+							</SubAttribute>
+							<SubAttribute>
+								<AttributeID>http://interop.gov.pt/SCAP/AMA/Funcionario/Cargo</AttributeID>
+								<Description>Title</Description>
+								<Value>Consultor</Value>
+							</SubAttribute>
+							<SubAttribute>
+								<AttributeID>http://interop.gov.pt/SCAP/AMA/Funcionario/Estado</AttributeID>
+								<Description>Estado</Description>
+								<Value>512</Value>
+							</SubAttribute>
+						</SubAttributeList>
+					</MainAttribute>
+					<AttributeSupplierCertificateChain>-----BEGIN CERTIFICATE-----
+						MIIDoDCCAoigAwIBAgIEATMzjzANBgkqhkiG9w0BAQUFADCBhzELMAkGA1UEBhMC
+						UFQxDzANBgNVBAgTBkxpc2JvbjEPMA0GA1UEBxMGTGlzYm9uMQwwCgYDVQQKEwNB
+						TUExCzAJBgNVBAsTAklUMSEwHwYDVQQDExhQcmVwcm9kIEVQU0EgQ2VydGlmaWNh
+						dGUxGDAWBgkqhkiG9w0BCQEWCWl0QGFtYS5wdDAeFw0xNzExMDIwMDAwMDBaFw0y
+						MDExMzAwMDAwMDBaMIGHMQswCQYDVQQGEwJQVDEPMA0GA1UECBMGTGlzYm9uMQ8w
+						DQYDVQQHEwZMaXNib24xDDAKBgNVBAoTA0FNQTELMAkGA1UECxMCSVQxITAfBgNV
+						BAMTGFByZXByb2QgRVBTQSBDZXJ0aWZpY2F0ZTEYMBYGCSqGSIb3DQEJARYJaXRA
+						YW1hLnB0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyP7hmX55PHIC
+						9lAbBbhqIb1VWfwa9TZYUtZij6Wavs9ALPIGChHVpFIV4peZniHO9pfpF1n1Tbvk
+						CNTk/+H3tItekRY5aCXDjWLODO8ZltQP29T40xD7pQ/+eI3xCOZuUrBk/IZl+myp
+						6foqi4pl0B2dI9NKFOhxxGMu2bmPaIMUJ8wzA3oFrY6bVPkCoQUZRAopeReDCC6Y
+						SBiVPfvWIFgs71RqTiEH8tlv182yYccOGEFoQY3xCsOSuxqPnlxXD7tcm5odRRY0
+						CI4ev1eAJYSn7rQUvoHYmPdcZUKLNiFMV6kAm3P8kggqB6gVUb7HxnlYQbfPH0j6
+						Or2uFFS++wIDAQABoxIwEDAOBgNVHQ8BAf8EBAMCAgQwDQYJKoZIhvcNAQEFBQAD
+						ggEBABXYKplnt9dqARlMNOOouveaYgHqfZ8uJ7PYDxw2DzrF57Qc/dT0+pjsXTus
+						8EF06RWERQE9kWkrMwgHSn6v0fMWObJehdOWSp7L+j8esblmnFb8qP3y/wYiWoUE
+						PsZKUaTqXPlNiMfnOxQF46vlJoZJBXFWzbHOW/xUBgBAtKUznTEnFFT0Ao/Qw6vm
+						YwCCaX0a7sx7YXUnYvZnz2CNoibq3yvKZ1bhbouNlWFIFLJlvAj6SJILDdFz5I4+
+						A5rz1g8bhkgVquo4I0OR4lTCOhkkuvRY96A44IpajIWKvRv8oHq2qH1SeAu6Lker
+						sUuKJPnakPOcyiz/3RPxNNg0r7c=
+						-----END CERTIFICATE-----
+					</AttributeSupplierCertificateChain>
+				</Transaction>
+				<Transaction>
+					<TransactionId>1</TransactionId>
+					<AttributeSupplier>
+						<Id>SCAP</Id>
+						<Name>Sistema de Certificação de Atributos Profissionais</Name>
+						<Type>INSTITUITION</Type>
+					</AttributeSupplier>
+					<MainAttribute>
+						<AttributeID>SCAP_eSeal</AttributeID>
+						<Description>Atributo SCAP</Description>
+					</MainAttribute>
+					<AttributeSupplierCertificateChain>-----BEGIN CERTIFICATE-----
+						MIIDnjCCAoagAwIBAgIEATMzfzANBgkqhkiG9w0BAQUFADCBhjELMAkGA1UEBhMC
+						UFQxDzANBgNVBAgTBkxpc2JvbjEPMA0GA1UEBxMGTGlzYm9uMQwwCgYDVQQKEwNB
+						TUExCzAJBgNVBAsTAklUMSAwHgYDVQQDExdQcmVwcm9kIERTUyBDZXJ0aWZpY2F0
+						ZTEYMBYGCSqGSIb3DQEJARYJaXRAYW1hLnB0MB4XDTE3MTEwMjAwMDAwMFoXDTIw
+						MTEzMDAwMDAwMFowgYYxCzAJBgNVBAYTAlBUMQ8wDQYDVQQIEwZMaXNib24xDzAN
+						BgNVBAcTBkxpc2JvbjEMMAoGA1UEChMDQU1BMQswCQYDVQQLEwJJVDEgMB4GA1UE
+						AxMXUHJlcHJvZCBEU1MgQ2VydGlmaWNhdGUxGDAWBgkqhkiG9w0BCQEWCWl0QGFt
+						YS5wdDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAOmDfrrZS4sEpi54
+						bfK+zZyBVN66lZcoVf5So7JlbVvDAVhBjO9gtx15wMv65cYpQJP2xNa5U6jnKE2O
+						kM2WwYc/xYvvhLtYp/ztgmz4pDdWhf1u2uz1nduTljyTgGs2UbMtG7ZngUJ0yDXl
+						Kgfug0XmYjy6r6WMVMRKF+Mue85K//c4/yBQVGnkjlzbSUyMj04gvQ+e2Brz0hqy
+						6WTidUBDRWyGki8oClRanU4OOKpkUhaFMt5vF5s8ZHpmvAEHs/icTJVpXVM1k9Eg
+						aoRUPPPhmkyBo6pJGYRPplKygOc6Z3yWiJlj0kmdOyKwdA2JhpgE4M3lgRyE3Xzl
+						ExUWtc0CAwEAAaMSMBAwDgYDVR0PAQH/BAQDAgIEMA0GCSqGSIb3DQEBBQUAA4IB
+						AQCrPokiE/ys5SaPAOzsq6yxUFdbs3q4poOnHQhUdCnhIRf/xFz/WWSHkkAKNLvW
+						5sV2GvsfBfUTG/3GFDfrM3o/GQa2s9BRnE/BP+KFhX82f5zErTH9AQKoH/y9VPbY
+						9/J/qsB/4iKKBgP/w8H1ZyJGSWWbg+B9PbHiQRPZjPYj2J3PZmKAAWy5bZPwS/RM
+						YWdCoZ05jzqLJhoDzajSrAVQ93pS770tV+rZYXUaQZXHRr2+mgj9AHiYPaFecDv5
+						pkRqXMyKBOxtA6lyzPeMQzBs+kW4o07t+Yp6uDZO08kryvBhzJUQIHZ222EIRZzc
+						ATvInVQrk/bljDnpWBoNtZaU
+						-----END CERTIFICATE-----
+					</AttributeSupplierCertificateChain>
+				</Transaction>
+			</TransactionList>
+		</AuthorizationResponse>
+	</soap:Body>
+</soap:Envelope>

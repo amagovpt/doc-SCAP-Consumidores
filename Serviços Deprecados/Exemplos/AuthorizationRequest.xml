@@ -1,0 +1,49 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns4="http://www.cartaodecidadao.pt/ccc/commons/messages/Types" xmlns:ns5="http://www.w3.org/2000/09/xmldsig#" xmlns:ns6="http://uri.etsi.org/01903/v1.3.2#" xmlns:ns7="http://www.cartaodecidadao.pt/ccc/commons/messages/SVG" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:ns2="http://www.cartaodecidadao.pt/ccc/sccc/messages/AttributeClientService" xmlns:ns3="http://www.cartaodecidadao.pt/ccc/commons/messages/Attribute" xmlns:ns1="http://www.cartaodecidadao.pt/ccc/tipos/SCAPSignature" xmlns:ns8="http://www.cartaodecidadao.pt/ccc/sccc/services/AttributeSupplierService" xmlns:ns9="http://www.cartaodecidadao.pt/ccc/sccc/messages/AttributeSupplierService">
+	<SOAP-ENV:Body>
+		<ns1:AuthorizationRequest>
+			<ns1:AppId>37a5c98a-4a7c-4da6-9be2-0605d2db0ac7</ns1:AppId>
+			<ns1:TOTP>558747</ns1:TOTP>
+			<ns1:DocumentSignature>TBTtnQeWUxzUtRsf3Sox3bMStvcjNm2m6428xfqeQVcIIWE6ETNhUlqxjD01DbOY3gT3orl2oogbeKOc71mSCXbeSSK7wPIwjFaewQpBdR3xmHQx6QwTpFcAPVuyrZvvw5Av+7IQCkJU5Zik1Qf2H+4TzxO5ZQOPu/IBHEqFtm8udhhqpbYkfuP0Ei4Xo4u0l/OlHxto8uz/RvneBS7Dx1qVwIQss0z6OIadiokkST7QAIOnmxnvP8aR+P+14ptgORRaZ9ZQY5MmTY7XlW0GuCq15BUjiJ2BoMaHTXshkR7BVwwR57IHzGUn5GoZb9Ch54Xy4JdpunqxLhiaF2ozmQ==</ns1:DocumentSignature>
+			<ns1:DocumentHash>qFgLwbV3tBbg1P/RYyWTwXsIPFzzwB2nlmheRSPYros=</ns1:DocumentHash>
+			<ns1:SignatureCertificate>-----BEGIN CERTIFICATE-----&#xA;MIIIkDCCB3igAwIBAgIIZf56oQWlpU0wDQYJKoZIhvcNAQELBQAwgYwxCzAJBgNV&#xA;BAYTAlBUMRwwGgYDVQQKDBNDYXJ0w6NvIGRlIENpZGFkw6NvMRQwEgYDVQQLDAtz&#xA;dWJFQ0VzdGFkbzFJMEcGA1UEAwxARUMgZGUgQXNzaW5hdHVyYSBEaWdpdGFsIFF1&#xA;YWxpZmljYWRhIGRvIENhcnTDo28gZGUgQ2lkYWTDo28gMDAxMTAeFw0xNjEyMDYx&#xA;NzA3MjJaFw0yMTEyMDUyMzU5NTlaMIHkMQswCQYDVQQGEwJQVDEcMBoGA1UECgwT&#xA;Q2FydMOjbyBkZSBDaWRhZMOjbzEcMBoGA1UECwwTQ2lkYWTDo28gUG9ydHVndcOq&#xA;czErMCkGA1UECwwiQXNzaW5hdHVyYSBRdWFsaWZpY2FkYSBkbyBDaWRhZMOjbzEZ&#xA;MBcGA1UEBAwQR09Ow4dBTFZFUyBCUsOBUzEUMBIGA1UEKgwLVElBR08gSk9Tw4kx&#xA;FDASBgNVBAUTC0JJMTM4MDIzNTIyMSUwIwYDVQQDDBxUSUFHTyBKT1PDiSBHT07D&#xA;h0FMVkVTIEJSw4FTMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoDMg&#xA;TTdnzCs5bSEN9uL3p3rGMjSd/AH+GelpU0Zp1ovIkSrKcn3W9mxVSNFOtGr4fo4T&#xA;ee/5W0nGJhRXJL0Tbk+yhhNtoktgQNI04bfLAmqJvEDNSAmn2iXMj/V2kiXQa3yR&#xA;sLxKImbiJ90Dn9U3DF4ONkk1/txQTD6/lhv4RV+szwrF08Kwlvwwr6C5koUdCFOr&#xA;pbSn7qdMiohHu14tLyrrtnQ78sgPTAtXQi5gUVK4rNyYvl5jDihUjolV2nJjnU4r&#xA;WuBeV62dkduweIbb8nwAQ/XJypAjoE1W+MATZcjU8BTrtfcUwaLRLrl+/Fo1RiKs&#xA;oJIgAuWT0kdcvcZLJwIDAQABo4IEmjCCBJYwDAYDVR0TAQH/BAIwADAOBgNVHQ8B&#xA;Af8EBAMCBkAwHQYDVR0OBBYEFBlUdHKeber3/3oge2NRwqvvz8eHMB8GA1UdIwQY&#xA;MBaAFJ1aXm7C/6OUeVon45YOYAUKLNUvMIICngYDVR0gBIIClTCCApEwdgYLYIRs&#xA;AQEBAgQBAAcwZzBlBggrBgEFBQcCARZZaHR0cDovL3BraS5jYXJ0YW9kZWNpZGFk&#xA;YW8ucHQvcHVibGljby9wb2xpdGljYXMvZHBjL2NjX3N1Yi1lY19jaWRhZGFvX2Fz&#xA;c2luYXR1cmFfZHBjLmh0bWwwdQYMYIRsAQEBAgQBAAEBMGUwYwYIKwYBBQUHAgEW&#xA;V2h0dHA6Ly9wa2kuY2FydGFvZGVjaWRhZGFvLnB0L3B1YmxpY28vcG9saXRpY2Fz&#xA;L3BjL2NjX3N1Yi1lY19jaWRhZGFvX2Fzc2luYXR1cmFfcGMuaHRtbDCCAZ4GCGCE&#xA;bAEBAQIKMIIBkDAoBggrBgEFBQcCARYcaHR0cDovL3d3dy5zY2VlLmdvdi5wdC9w&#xA;Y2VydDCCAWIGCCsGAQUFBwICMIIBVB6CAVAATwAgAGMAZQByAHQAaQBmAGkAYwBh&#xA;AGQAbwAgAGUAbQBpAHQAaQBkAG8AIABzAGUAZwB1AG4AZABvACAAZQBzAHQAYQAg&#xA;AHAAbwBsAO0AdABpAGMAYQAgAOkAIABlAHEAdQBpAHYAYQBsAGUAbgB0AGUAIABh&#xA;ACAAdQBtACAAYwBlAHIAdABpAGYAaQBjAGEAZABvACAAZABpAGcAaQB0AGEAbAAg&#xA;AHEAdQBhAGwAaQBmAGkAYwBhAGQAbwAsACAAbgBvAHMAIAB0AGUAcgBtAG8AcwAg&#xA;AGQAbwAgAGQAZQBmAGkAbgBpAGQAbwAgAG4AYQAgAEwAZQBnAGkAcwBsAGEA5wDj&#xA;AG8AIABwAG8AcgB0AHUAZwB1AGUAcwBhACwAIABhAHAAbABpAGMA4QB2AGUAbAAg&#xA;AHAAYQByAGEAIABvACAAZQBmAGUAaQB0AG8waQYDVR0fBGIwYDBeoFygWoZYaHR0&#xA;cDovL3BraS5jYXJ0YW9kZWNpZGFkYW8ucHQvcHVibGljby9scmMvY2Nfc3ViLWVj&#xA;X2NpZGFkYW9fYXNzaW5hdHVyYV9jcmwwMDExX3AwMDA1LmNybDBvBgNVHS4EaDBm&#xA;MGSgYqBghl5odHRwOi8vcGtpLmNhcnRhb2RlY2lkYWRhby5wdC9wdWJsaWNvL2xy&#xA;Yy9jY19zdWItZWNfY2lkYWRhb19hc3NpbmF0dXJhX2NybDAwMTFfZGVsdGFfcDAw&#xA;MDUuY3JsMEsGCCsGAQUFBwEBBD8wPTA7BggrBgEFBQcwAYYvaHR0cDovL29jc3Au&#xA;YXNjLmNhcnRhb2RlY2lkYWRhby5wdC9wdWJsaWNvL29jc3AwEQYJYIZIAYb4QgEB&#xA;BAQDAgAgMC4GCCsGAQUFBwEDBCIwIDAKBggrBgEFBQcLAjAIBgYEAI5GAQEwCAYG&#xA;BACORgEEMCgGA1UdCQQhMB8wHQYIKwYBBQUHCQExERgPMTk5MDAxMTkxMjAwMDBa&#xA;MA0GCSqGSIb3DQEBCwUAA4IBAQBZlQwDAQQVNbCKXiPWbUlOsqo0rTWYy0o4VMoc&#xA;6Te3ha7tLjhySGavdteyR7b7QGZht/kOjVxR01Dl1PCVcUHT0QbcKFEq+E7YzypJ&#xA;l6/Ib5Jhvy5ErVDM0DAzlJ7EAXT966jqsJ9uK6sWLIl+b4Qs+GPKl+61U8Fx3uvG&#xA;KdPoUIhc6kI/qi/wCfHdSeAxZWsqDQlr6cEwsKe3J9zNOz9ggHfP7V3S0IsWOhUI&#xA;Su58DrS/+RlOrIXgcw6Ux48jaKWPMOzomTLxJ3ZnFb9297RFLxWEZHV+gCFUz/k4&#xA;DBn9N6BiS8m5YSkhwY+9tar/rfXd7DjDzT05zDU1DZGBzfHG&#xA;-----END CERTIFICATE-----&#xA;</ns1:SignatureCertificate>
+			<ns1:PersonalData>
+				<ns1:Name>TIAGO JOSÉ GONÇALVES BRÁS</ns1:Name>
+				<ns1:NIC>138023522</ns1:NIC>
+			</ns1:PersonalData>
+			<ns1:AttributeList>
+				<ns1:Attribute>
+					<ns1:AttributeSupplier>
+						<ns1:Id>http://interop.gov.pt/SCAP/AMA</ns1:Id>
+						<ns1:Name>Agência para a Modernização Administrativa</ns1:Name>
+					</ns1:AttributeSupplier>
+					<ns1:MainAttribute>
+						<ns1:AttributeID>http://interop.gov.pt/SCAP/AMA/Funcionario</ns1:AttributeID>
+						<ns1:Description>Consultor eID</ns1:Description>
+						<ns1:SubAttributeList>
+							<ns1:SubAttribute>
+								<ns1:AttributeID>http://interop.gov.pt/SCAP/AMA/Funcionario/AreaOrganica</ns1:AttributeID>
+								<ns1:Description>Área Orgânica</ns1:Description>
+								<ns1:Value>eID</ns1:Value>
+							</ns1:SubAttribute>
+							<ns1:SubAttribute>
+								<ns1:AttributeID>http://interop.gov.pt/SCAP/AMA/Funcionario/Mail</ns1:AttributeID>
+								<ns1:Description>E-mail</ns1:Description>
+								<ns1:Value>tiago.bras@ama.pt</ns1:Value>
+							</ns1:SubAttribute>
+							<ns1:SubAttribute>
+								<ns1:AttributeID>http://interop.gov.pt/SCAP/AMA/Funcionario/Cargo</ns1:AttributeID>
+								<ns1:Description>Title</ns1:Description>
+								<ns1:Value>Consultor</ns1:Value>
+							</ns1:SubAttribute>
+							<ns1:SubAttribute>
+								<ns1:AttributeID>http://interop.gov.pt/SCAP/AMA/Funcionario/Estado</ns1:AttributeID>
+								<ns1:Description>Estado</ns1:Description>
+								<ns1:Value>512</ns1:Value>
+							</ns1:SubAttribute>
+						</ns1:SubAttributeList>
+					</ns1:MainAttribute>
+				</ns1:Attribute>
+			</ns1:AttributeList>
+		</ns1:AuthorizationRequest>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

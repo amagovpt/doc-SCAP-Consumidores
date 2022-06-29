@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="SCAPSignature" targetNamespace="http://www.cartaodecidadao.pt/ccc/internalservices/services/SCAPSignature" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.cartaodecidadao.pt/ccc/internalservices/services/SCAPSignature" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:scapsignature="http://www.cartaodecidadao.pt/ccc/tipos/SCAPSignature">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.cartaodecidadao.pt/ccc/tipos/SCAPSignature" version="1.0" xmlns="http://www.cartaodecidadao.pt/ccc/tipos/SCAPSignature">
+      <xs:element name="AuthorizationRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" name="AppId" type="xs:string"/>
+            <xs:element minOccurs="1" name="TOTP" type="xs:string"/>
+            <xs:element minOccurs="1" name="DocumentSignature" type="xs:base64Binary"/>
+            <xs:element minOccurs="1" name="DocumentHash" type="xs:base64Binary"/>
+            <xs:element minOccurs="1" name="SignatureCertificate" type="xs:string"/>
+            <xs:element minOccurs="1" name="PersonalData" type="PersonalData"/>
+            <xs:element minOccurs="1" name="AttributeList" type="AttributeListType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AuthorizationResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" name="Status" type="Status"/>
+            <xs:element minOccurs="0" name="ProcessId" type="xs:string"/>
+            <xs:element minOccurs="0" name="TransactionList" type="TransactionTypeList"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SignatureRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" name="AppId" type="xs:string"/>
+            <xs:element minOccurs="1" name="ProcessId" type="xs:string"/>
+            <xs:element minOccurs="0" name="TOTP" type="xs:string"/>
+            <xs:element minOccurs="1" name="Hash" type="xs:base64Binary"/>
+            <xs:element minOccurs="1" name="Transaction" type="TransactionType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SignatureResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" name="Status" type="Status"/>
+            <xs:element minOccurs="0" name="ProcessId" type="xs:string"/>
+            <xs:element minOccurs="0" name="DocumentSignature" type="xs:base64Binary"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="Status">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="Code" type="xs:string"/>
+          <xs:element minOccurs="1" name="Message" type="xs:string"/>
+          <xs:element minOccurs="0" name="Field" type="xs:string"/>
+          <xs:element minOccurs="0" name="FieldValue" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PersonalData">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="Name" type="xs:string"/>
+          <xs:element minOccurs="1" name="NIC" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AttributeListType">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="1" name="Attribute" type="AttributeType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AttributeType">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="AttributeSupplier" type="AttributeSupplierType"/>
+          <xs:element minOccurs="0" name="MainAttribute" type="MainAttributeType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="TransactionTypeList">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="1" name="Transaction" type="TransactionType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="TransactionType">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="TransactionId" type="xs:string"/>
+          <xs:element minOccurs="1" name="AttributeSupplier" type="AttributeSupplierType"/>
+          <xs:element minOccurs="1" name="MainAttribute" type="MainAttributeType"/>
+          <xs:element minOccurs="1" name="AttributeSupplierCertificateChain" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AttributeSupplierType">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="Id" type="xs:string"/>
+          <xs:element minOccurs="1" name="Name" type="xs:string"/>
+          <xs:element minOccurs="0" name="Type" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="MainAttributeType">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="AttributeID" type="xs:string"/>
+          <xs:element minOccurs="0" name="Description" type="xs:string"/>
+          <xs:element minOccurs="0" name="LegalActList" type="LegalActListType"/>
+          <xs:element minOccurs="1" name="SubAttributeList" type="SubAttributeListType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="LegalActListType">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="1" name="LegalAct" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SubAttributeListType">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="1" name="SubAttribute" type="SubAttributeType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SubAttributeType">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="AttributeID" type="xs:string"/>
+          <xs:element minOccurs="0" name="Description" type="xs:string"/>
+          <xs:element minOccurs="0" name="LegalActList" type="LegalActListType"/>
+          <xs:element minOccurs="0" name="Value" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="SignatureResponse">
+    <wsdl:part element="scapsignature:SignatureResponse" name="SignatureResponseParameters"/>
+  </wsdl:message>
+  <wsdl:message name="AuthorizationRequest">
+    <wsdl:part element="scapsignature:AuthorizationRequest" name="AuthorizationRequestParameters"/>
+  </wsdl:message>
+  <wsdl:message name="AuthorizationResponse">
+    <wsdl:part element="scapsignature:AuthorizationResponse" name="AuthorizationResponseParameters"/>
+  </wsdl:message>
+  <wsdl:message name="SignatureRequest">
+    <wsdl:part element="scapsignature:SignatureRequest" name="SignatureRequestParameters"/>
+  </wsdl:message>
+  <wsdl:portType name="SCAPAuthorizationService">
+    <wsdl:operation name="Authorization">
+      <wsdl:input message="tns:AuthorizationRequest" name="AuthorizationRequest"/>
+      <wsdl:output message="tns:AuthorizationResponse" name="AuthorizationResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="SCAPSignatureService">
+    <wsdl:operation name="Signature">
+      <wsdl:input message="tns:SignatureRequest" name="SignatureRequest"/>
+      <wsdl:output message="tns:SignatureResponse" name="SignatureResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AuthorizationServiceBinding" type="tns:SCAPAuthorizationService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Authorization">
+      <soap:operation soapAction="http://www.cartaodecidadao.pt/ccc/internalservices/services/SCAPSignature/Operations/Authorization" style="document"/>
+      <wsdl:input name="AuthorizationRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AuthorizationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SignatureServiceBinding" type="tns:SCAPSignatureService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Signature">
+      <soap:operation soapAction="http://www.cartaodecidadao.pt/ccc/internalservices/services/SCAPSignature/Operations/Signature" style="document"/>
+      <wsdl:input name="SignatureRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="SignatureResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SCAPSignatureService">
+    <wsdl:port binding="tns:SignatureServiceBinding" name="SignatureServicePort">
+      <soap:address location="http://preprod.mw.autenticacao.gov.pt/SCAPSignature/SignatureService"/>
+    </wsdl:port>
+    <wsdl:port binding="tns:AuthorizationServiceBinding" name="SCAPSignatureServicePort">
+      <soap:address location="/AuthorizationService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

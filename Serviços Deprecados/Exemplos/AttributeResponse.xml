@@ -1,0 +1,80 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+	<soap:Body>
+		<AttributeResponse xmlns="http://www.cartaodecidadao.pt/ccc/sccc/messages/AttributeClientService" xmlns:ns2="http://www.cartaodecidadao.pt/ccc/commons/messages/Attribute" xmlns:ns3="http://www.w3.org/2000/09/xmldsig#" xmlns:ns4="http://uri.etsi.org/01903/v1.3.2#" xmlns:ns5="http://www.cartaodecidadao.pt/ccc/commons/messages/SVG">
+			<ProcessId>984287bd-c730-4395-9d56-40e8089c23a2</ProcessId>
+			<AttributeResponseValues>
+				<ATTRSupplier>
+					<ns2:Id>http://interop.gov.pt/SCAP/AMA</ns2:Id>
+					<ns2:Name>Agência para a Modernização Administrativa</ns2:Name>
+				</ATTRSupplier>
+				<ResponseResult>
+					<ResultCode>200</ResultCode>
+					<ResultMessage>Sucesso</ResultMessage>
+				</ResponseResult>
+				<SignedAttributes>
+					<ns2:SignatureAttribute Id="SignatureVID">
+						<ns3:SignedInfo>
+							<ns3:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+							<ns3:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+							<ns3:Reference URI="#root">
+								<ns3:Transforms>
+									<ns3:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+								</ns3:Transforms>
+								<ns3:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+								<ns3:DigestValue Id="hashDigest">FNdZWSDsrJ7ZOTmAxMxDi9BxDLxfbfgcAHefLdRNHWc=</ns3:DigestValue>
+							</ns3:Reference>
+						</ns3:SignedInfo>
+						<ns3:SignatureValue Id="SigPIAP">maO5brQVesBXO11h8JXYz1ZeSRQA0SGioveryiSUvzmJP7/gGu3eFGxfWUAxecvPzK20ZNiSjx4+3Xxft6z6vbhOpEIJ08p9lstVG7lziCDzKUvzjhm6uHlafw4wKv8dZahUsihlIW3hubIgn7tIZ6NXO47Pcbm1OcdRQGroVr5GwSFNFk3gTzGXcezXaHKjF2vwZSd2OiQN+JtBsJUaPT/Z24Z5ukVauFPyf8/B7hYm60N60nDY0AU22qmhRovcmm6akirzbcCQ38xDcr60VZOjg3VeCinVHnA2ElasKyH6mgIweMwu91cYVQH/GeHOQiG1YXbra5jtstYGZ5nysQ==</ns3:SignatureValue>
+						<ns3:KeyInfo Id="KeyInfo">
+							<ns3:X509Data>
+								<ns3:X509Certificate>MIIDoDCCAoigAwIBAgIEATMzjzANBgkqhkiG9w0BAQUFADCBhzELMAkGA1UEBhMCUFQxDzANBgNVBAgTBkxpc2JvbjEPMA0GA1UEBxMGTGlzYm9uMQwwCgYDVQQKEwNBTUExCzAJBgNVBAsTAklUMSEwHwYDVQQDExhQcmVwcm9kIEVQU0EgQ2VydGlmaWNhdGUxGDAWBgkqhkiG9w0BCQEWCWl0QGFtYS5wdDAeFw0xNzExMDIwMDAwMDBaFw0yMDExMzAwMDAwMDBaMIGHMQswCQYDVQQGEwJQVDEPMA0GA1UECBMGTGlzYm9uMQ8wDQYDVQQHEwZMaXNib24xDDAKBgNVBAoTA0FNQTELMAkGA1UECxMCSVQxITAfBgNVBAMTGFByZXByb2QgRVBTQSBDZXJ0aWZpY2F0ZTEYMBYGCSqGSIb3DQEJARYJaXRAYW1hLnB0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyP7hmX55PHIC9lAbBbhqIb1VWfwa9TZYUtZij6Wavs9ALPIGChHVpFIV4peZniHO9pfpF1n1TbvkCNTk/+H3tItekRY5aCXDjWLODO8ZltQP29T40xD7pQ/+eI3xCOZuUrBk/IZl+myp6foqi4pl0B2dI9NKFOhxxGMu2bmPaIMUJ8wzA3oFrY6bVPkCoQUZRAopeReDCC6YSBiVPfvWIFgs71RqTiEH8tlv182yYccOGEFoQY3xCsOSuxqPnlxXD7tcm5odRRY0CI4ev1eAJYSn7rQUvoHYmPdcZUKLNiFMV6kAm3P8kggqB6gVUb7HxnlYQbfPH0j6Or2uFFS++wIDAQABoxIwEDAOBgNVHQ8BAf8EBAMCAgQwDQYJKoZIhvcNAQEFBQADggEBABXYKplnt9dqARlMNOOouveaYgHqfZ8uJ7PYDxw2DzrF57Qc/dT0+pjsXTus8EF06RWERQE9kWkrMwgHSn6v0fMWObJehdOWSp7L+j8esblmnFb8qP3y/wYiWoUEPsZKUaTqXPlNiMfnOxQF46vlJoZJBXFWzbHOW/xUBgBAtKUznTEnFFT0Ao/Qw6vmYwCCaX0a7sx7YXUnYvZnz2CNoibq3yvKZ1bhbouNlWFIFLJlvAj6SJILDdFz5I4+A5rz1g8bhkgVquo4I0OR4lTCOhkkuvRY96A44IpajIWKvRv8oHq2qH1SeAu6LkersUuKJPnakPOcyiz/3RPxNNg0r7c=</ns3:X509Certificate>
+							</ns3:X509Data>
+						</ns3:KeyInfo>
+						<ns3:Object Id="029a632b-4d96-4a4a-928d-00f5c6605f0b">
+							<ns2:Attribute>
+								<ns2:AttributeSupplier>
+									<ns2:Id>http://interop.gov.pt/SCAP/AMA</ns2:Id>
+									<ns2:Name>Agência para a Modernizaçao Administrativa</ns2:Name>
+								</ns2:AttributeSupplier>
+								<ns2:Date>2019-05-29</ns2:Date>
+								<ns2:Validity>2019-06-05</ns2:Validity>
+								<ns2:PersonalData>
+									<ns2:Name>TIAGO JOSÉ GONÇALVES BRÁS</ns2:Name>
+									<ns2:NIC>13802352</ns2:NIC>
+								</ns2:PersonalData>
+								<ns2:MainAttribute>
+									<ns2:AttributeID>http://interop.gov.pt/SCAP/AMA/Funcionario</ns2:AttributeID>
+									<ns2:Description>Consultor eID</ns2:Description>
+									<ns2:SubAttributeList>
+										<ns2:SubAttribute>
+											<ns2:AttributeID>http://interop.gov.pt/SCAP/AMA/Funcionario/AreaOrganica</ns2:AttributeID>
+											<ns2:Description>Área Orgânica</ns2:Description>
+											<ns2:Value>eID</ns2:Value>
+										</ns2:SubAttribute>
+										<ns2:SubAttribute>
+											<ns2:AttributeID>http://interop.gov.pt/SCAP/AMA/Funcionario/Mail</ns2:AttributeID>
+											<ns2:Description>E-mail</ns2:Description>
+											<ns2:Value>tiago.bras@ama.pt</ns2:Value>
+										</ns2:SubAttribute>
+										<ns2:SubAttribute>
+											<ns2:AttributeID>http://interop.gov.pt/SCAP/AMA/Funcionario/Cargo</ns2:AttributeID>
+											<ns2:Description>Title</ns2:Description>
+											<ns2:Value>Consultor</ns2:Value>
+										</ns2:SubAttribute>
+										<ns2:SubAttribute>
+											<ns2:AttributeID>http://interop.gov.pt/SCAP/AMA/Funcionario/Estado</ns2:AttributeID>
+											<ns2:Description>Estado</ns2:Description>
+											<ns2:Value>512</ns2:Value>
+										</ns2:SubAttribute>
+									</ns2:SubAttributeList>
+								</ns2:MainAttribute>
+							</ns2:Attribute>
+						</ns3:Object>
+					</ns2:SignatureAttribute>
+				</SignedAttributes>
+			</AttributeResponseValues>
+			<AppId>37a5c98a-4a7c-4da6-9be2-0605d2db0ac7</AppId>
+			<SecretKey>VEytrp6ib0wM8+37muRwjI7uR3Q798y2iNs8vk6U9HeWajhdcg3s+7ocLEcgvSTsTYHVPgDamxYIQ8klKGY1fKwNlg34eivkbwE2WvHMp3PORmu4bqL8ZA==</SecretKey>
+		</AttributeResponse>
+	</soap:Body>
+</soap:Envelope>

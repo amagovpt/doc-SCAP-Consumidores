@@ -1,0 +1,45 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns4="http://www.cartaodecidadao.pt/ccc/commons/messages/Types" xmlns:ns5="http://www.w3.org/2000/09/xmldsig#" xmlns:ns6="http://uri.etsi.org/01903/v1.3.2#" xmlns:ns7="http://www.cartaodecidadao.pt/ccc/commons/messages/SVG" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:ns2="http://www.cartaodecidadao.pt/ccc/sccc/messages/AttributeClientService" xmlns:ns3="http://www.cartaodecidadao.pt/ccc/commons/messages/Attribute" xmlns:ns1="http://www.cartaodecidadao.pt/ccc/tipos/SCAPSignature" xmlns:ns8="http://www.cartaodecidadao.pt/ccc/sccc/services/AttributeSupplierService" xmlns:ns9="http://www.cartaodecidadao.pt/ccc/sccc/messages/AttributeSupplierService">
+	<SOAP-ENV:Body>
+		<ns1:SignatureRequest>
+			<ns1:AppId>37a5c98a-4a7c-4da6-9be2-0605d2db0ac7</ns1:AppId>
+			<ns1:ProcessId>bd5abc28-3224-4615-8e09-5761e6eef2c0</ns1:ProcessId>
+			<ns1:TOTP>558747</ns1:TOTP>
+			<ns1:Hash>MDEwDQYJYIZIAWUDBAIBBQAEIJ048g+OxxOb8raLKxkmY7r/ylQ/cYQk1tqFD2IILnWb</ns1:Hash>
+			<ns1:Transaction>
+				<ns1:TransactionId>0</ns1:TransactionId>
+				<ns1:AttributeSupplier>
+					<ns1:Id>http://interop.gov.pt/SCAP/AMA</ns1:Id>
+					<ns1:Name>Agência para a Modernização Administrativa</ns1:Name>
+					<ns1:Type>INSTITUTION</ns1:Type>
+				</ns1:AttributeSupplier>
+				<ns1:MainAttribute>
+					<ns1:AttributeID>http://interop.gov.pt/SCAP/AMA/Funcionario</ns1:AttributeID>
+					<ns1:Description>Consultor eID</ns1:Description>
+					<ns1:SubAttributeList>
+						<ns1:SubAttribute>
+							<ns1:AttributeID>http://interop.gov.pt/SCAP/AMA/Funcionario/AreaOrganica</ns1:AttributeID>
+							<ns1:Description>Área Orgânica</ns1:Description>
+							<ns1:Value>eID</ns1:Value>
+						</ns1:SubAttribute>
+						<ns1:SubAttribute>
+							<ns1:AttributeID>http://interop.gov.pt/SCAP/AMA/Funcionario/Mail</ns1:AttributeID>
+							<ns1:Description>E-mail</ns1:Description>
+							<ns1:Value>tiago.bras@ama.pt</ns1:Value>
+						</ns1:SubAttribute>
+						<ns1:SubAttribute>
+							<ns1:AttributeID>http://interop.gov.pt/SCAP/AMA/Funcionario/Cargo</ns1:AttributeID>
+							<ns1:Description>Title</ns1:Description>
+							<ns1:Value>Consultor</ns1:Value>
+						</ns1:SubAttribute>
+						<ns1:SubAttribute>
+							<ns1:AttributeID>http://interop.gov.pt/SCAP/AMA/Funcionario/Estado</ns1:AttributeID>
+							<ns1:Description>Estado</ns1:Description>
+							<ns1:Value>512</ns1:Value>
+						</ns1:SubAttribute>
+					</ns1:SubAttributeList>
+				</ns1:MainAttribute>
+				<ns1:AttributeSupplierCertificateChain>-----BEGIN CERTIFICATE-----&#xA;MIIDoDCCAoigAwIBAgIEATMzjzANBgkqhkiG9w0BAQUFADCBhzELMAkGA1UEBhMC&#xA;UFQxDzANBgNVBAgTBkxpc2JvbjEPMA0GA1UEBxMGTGlzYm9uMQwwCgYDVQQKEwNB&#xA;TUExCzAJBgNVBAsTAklUMSEwHwYDVQQDExhQcmVwcm9kIEVQU0EgQ2VydGlmaWNh&#xA;dGUxGDAWBgkqhkiG9w0BCQEWCWl0QGFtYS5wdDAeFw0xNzExMDIwMDAwMDBaFw0y&#xA;MDExMzAwMDAwMDBaMIGHMQswCQYDVQQGEwJQVDEPMA0GA1UECBMGTGlzYm9uMQ8w&#xA;DQYDVQQHEwZMaXNib24xDDAKBgNVBAoTA0FNQTELMAkGA1UECxMCSVQxITAfBgNV&#xA;BAMTGFByZXByb2QgRVBTQSBDZXJ0aWZpY2F0ZTEYMBYGCSqGSIb3DQEJARYJaXRA&#xA;YW1hLnB0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyP7hmX55PHIC&#xA;9lAbBbhqIb1VWfwa9TZYUtZij6Wavs9ALPIGChHVpFIV4peZniHO9pfpF1n1Tbvk&#xA;CNTk/+H3tItekRY5aCXDjWLODO8ZltQP29T40xD7pQ/+eI3xCOZuUrBk/IZl+myp&#xA;6foqi4pl0B2dI9NKFOhxxGMu2bmPaIMUJ8wzA3oFrY6bVPkCoQUZRAopeReDCC6Y&#xA;SBiVPfvWIFgs71RqTiEH8tlv182yYccOGEFoQY3xCsOSuxqPnlxXD7tcm5odRRY0&#xA;CI4ev1eAJYSn7rQUvoHYmPdcZUKLNiFMV6kAm3P8kggqB6gVUb7HxnlYQbfPH0j6&#xA;Or2uFFS++wIDAQABoxIwEDAOBgNVHQ8BAf8EBAMCAgQwDQYJKoZIhvcNAQEFBQAD&#xA;ggEBABXYKplnt9dqARlMNOOouveaYgHqfZ8uJ7PYDxw2DzrF57Qc/dT0+pjsXTus&#xA;8EF06RWERQE9kWkrMwgHSn6v0fMWObJehdOWSp7L+j8esblmnFb8qP3y/wYiWoUE&#xA;PsZKUaTqXPlNiMfnOxQF46vlJoZJBXFWzbHOW/xUBgBAtKUznTEnFFT0Ao/Qw6vm&#xA;YwCCaX0a7sx7YXUnYvZnz2CNoibq3yvKZ1bhbouNlWFIFLJlvAj6SJILDdFz5I4+&#xA;A5rz1g8bhkgVquo4I0OR4lTCOhkkuvRY96A44IpajIWKvRv8oHq2qH1SeAu6Lker&#xA;sUuKJPnakPOcyiz/3RPxNNg0r7c=&#xA;-----END CERTIFICATE-----&#xA;</ns1:AttributeSupplierCertificateChain>
+			</ns1:Transaction>
+		</ns1:SignatureRequest>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

@@ -1,0 +1,12 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+	<soap:Body>
+		<SignatureResponse xmlns="http://www.cartaodecidadao.pt/ccc/tipos/SCAPSignature">
+			<Status>
+				<Code>00</Code>
+				<Message>Success</Message>
+			</Status>
+			<ProcessId>bd5abc28-3224-4615-8e09-5761e6eef2c0</ProcessId>
+			<DocumentSignature>FlxBDXhTin6m3f2+oXSuZT5fUJJqNlg8M7rbuvQ6s1+VxqFBe4KPkDr21QG8rqg220L3uj0msSwGCOotTg13XvmLfVpHE1v7ORPMGy9o+vwFo5n2iO5XTl8zaqBMTbcC0YrJ5KynDRNkg1Xkbj7fdA2LMAoOr28RQwDBiBJ+RUeJA5Z7vk0qZ3u9YRoyDiFQGnEBead3Q8nRSARCNk8O2znSZqhlFArDEA5PNdqSbk/9fG3gU+pouW1loBnFR/HpDdtCo3jduaeFzuaL8OGTC/M2BxkfXcyHRtZ87Ar4aS6A5mfi4XpbH41YSg19Q0LJMGrYyMhP17brgMQn88UuPJQ==</DocumentSignature>
+		</SignatureResponse>
+	</soap:Body>
+</soap:Envelope>

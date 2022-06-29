@@ -1,0 +1,679 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="AttributeClientService" targetNamespace="http://www.cartaodecidadao.pt/ccc/sccc/services/AttributeClientService" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.cartaodecidadao.pt/ccc/sccc/services/AttributeClientService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:attman="http://www.cartaodecidadao.pt/ccc/sccc/messages/AttributeClientService">
+  <wsdl:types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://www.cartaodecidadao.pt/ccc/sccc/messages/AttributeClientService" xmlns:types="http://www.cartaodecidadao.pt/ccc/commons/messages/Types" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:att="http://www.cartaodecidadao.pt/ccc/commons/messages/Attribute">
+      <xsd:element name="AttributeRequest" type="attman:AttributeRequestType"/>
+      <xsd:element name="AttributeResponse" type="attman:AttributeResponseType"/>
+      <xsd:element name="PSAAttributeRequest" type="attman:PSAAttributeRequestType"/>
+      <xsd:element name="SingleAttributeResponse" type="attman:SingleAttributeResponseType"/>
+      <xsd:complexType name="AttributeRequestType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="1" minOccurs="1" name="ProcessId" type="types:ProcessIDType"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="Citizen" type="att:PersonalDataType"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="AttributeSuppliers" type="attman:AttributeSupplierListType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="AllEnterprises" type="xsd:boolean"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="AllEmployees" type="xsd:boolean"/>
+          <xsd:element minOccurs="0" name="AppId" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="AppName" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="SecretKey" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SingleAttributeRequestType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="1" minOccurs="1" name="ProcessId" type="types:ProcessIDType"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="Citizen" type="att:PersonalDataType"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="AttributeSuppliers" type="att:AttributeSupplierType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PSAAttributeRequestType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="1" minOccurs="1" name="ProcessId" type="types:ProcessIDType"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="Citizen" type="att:PersonalDataType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="CompanyId" type="types:NIPCType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="CompanyName" type="types:CompanyNameType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="AttributeSupplierListType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="1" name="AttributeSupplier" type="att:AttributeSupplierType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="AttributeResponseType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="1" minOccurs="1" name="ProcessId" type="types:ProcessIDType"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="1" name="AttributeResponseValues" type="attman:AttributesType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="ErrorMessage" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="AppId" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="SecretKey" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SingleAttributeResponseType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="1" minOccurs="1" name="ProcessId" type="types:ProcessIDType"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="AttributeResponseValues" type="attman:AttributesType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="UnsignedAttributeResponseType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="1" minOccurs="1" name="ProcessId" type="types:ProcessIDType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="CompanyId" type="types:NIPCType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="CompanyName" type="types:CompanyNameType"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="AttributeResponseValues" type="attman:UnsignedAttributesType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="AttributesType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="1" minOccurs="1" name="ATTRSupplier" type="att:AttributeSupplierType"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="ResponseResult" type="attman:ResponseResult"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="SignedAttributes" type="attman:SignedAttributesType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="UnsignedAttributesType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="1" minOccurs="1" name="ResponseResult" type="attman:ResponseResult"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="UnsignedAttributes" type="attman:UnsignedAttributesBasicType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SignedAttributesType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" ref="att:SignatureAttribute"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="UnsignedAttributesBasicType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" ref="att:Attribute"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ResponseResult">
+        <xsd:sequence>
+          <xsd:element name="ResultCode" type="xsd:string"/>
+          <xsd:element name="ResultMessage" type="xsd:string"/>
+          <xsd:element name="CitizenIDWithExtraInfo" type="att:PersonalDataType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xs:schema targetNamespace="http://www.w3.org/2000/09/xmldsig#" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:svg="http://www.cartaodecidadao.pt/ccc/commons/messages/SVG" xmlns:etsi="http://uri.etsi.org/01903/v1.3.2#" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:att="http://www.cartaodecidadao.pt/ccc/commons/messages/Attribute">
+      <xs:annotation>
+        <xs:documentation>XAdES schema for i-roles</xs:documentation>
+      </xs:annotation>
+      <xs:element name="Signature" type="ds:SignatureType"/>
+      <xs:complexType name="SignatureType">
+        <xs:sequence>
+          <xs:element ref="ds:SignedInfo"/>
+          <xs:element ref="ds:SignatureValue"/>
+          <xs:element ref="ds:KeyInfo"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" ref="ds:Object"/>
+        </xs:sequence>
+        <xs:attribute name="Id" type="xs:ID" use="required"/>
+      </xs:complexType>
+      <xs:element name="SignedInfo" type="ds:SignedInfoType"/>
+      <xs:complexType name="SignedInfoType">
+        <xs:sequence>
+          <xs:element ref="ds:CanonicalizationMethod"/>
+          <xs:element ref="ds:SignatureMethod"/>
+          <xs:element maxOccurs="unbounded" minOccurs="1" ref="ds:Reference"/>
+        </xs:sequence>
+        <xs:attribute name="Id" type="xs:ID" use="required"/>
+      </xs:complexType>
+      <xs:element name="CanonicalizationMethod" type="ds:CanonicalizationMethodType"/>
+      <xs:complexType name="CanonicalizationMethodType">
+        <xs:attribute name="Algorithm" type="xs:anyURI" use="required"/>
+      </xs:complexType>
+      <xs:element name="SignatureMethod" type="ds:SignatureMethodType"/>
+      <xs:complexType name="SignatureMethodType">
+        <xs:attribute name="Algorithm" type="xs:anyURI" use="required"/>
+      </xs:complexType>
+      <xs:element name="Reference" type="ds:ReferenceType"/>
+      <xs:complexType name="ReferenceType">
+        <xs:sequence>
+          <xs:element ref="ds:Transforms"/>
+          <xs:element ref="ds:DigestMethod"/>
+          <xs:element ref="ds:DigestValue"/>
+        </xs:sequence>
+        <xs:attribute name="Id" type="xs:ID" use="required"/>
+        <xs:attribute name="Type" type="xs:anyURI" use="optional"/>
+        <xs:attribute name="URI" type="xs:anyURI" use="optional"/>
+      </xs:complexType>
+      <xs:element name="Transforms" type="ds:TransformsType"/>
+      <xs:complexType name="TransformsType">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="1" ref="ds:Transform"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Transform" type="ds:TransformType"/>
+      <xs:complexType name="TransformType">
+        <xs:attribute name="Algorithm" type="xs:anyURI" use="required"/>
+      </xs:complexType>
+      <xs:element name="DigestMethod" type="ds:DigestMethodType"/>
+      <xs:complexType name="DigestMethodType">
+        <xs:attribute name="Algorithm" type="xs:anyURI" use="required"/>
+      </xs:complexType>
+      <xs:element name="KeyInfo" type="ds:KeyInfoType"/>
+      <xs:complexType name="KeyInfoType">
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="1" ref="ds:X509Data"/>
+        </xs:sequence>
+        <xs:attribute name="Id" type="xs:ID" use="required"/>
+      </xs:complexType>
+      <xs:element name="X509Data" type="ds:X509DataType"/>
+      <xs:complexType name="X509DataType">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="1" ref="ds:X509Certificate"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Object" type="ds:ObjectType"/>
+      <xs:complexType name="ObjectType">
+        <xs:choice>
+          <xs:element maxOccurs="1" minOccurs="0" ref="etsi:QualifyingProperties"/>
+          <xs:element maxOccurs="1" minOccurs="0" ref="svg:SVGList"/>
+          <xs:element maxOccurs="1" minOccurs="0" ref="att:Attribute"/>
+        </xs:choice>
+        <xs:attribute name="Id" type="xs:ID" use="required"/>
+      </xs:complexType>
+      <xs:element name="X509Certificate" type="ds:X509CertificateType"/>
+      <xs:complexType name="X509CertificateType">
+        <xs:simpleContent>
+          <xs:extension base="xs:base64Binary">
+            <xs:attribute name="Id" type="xs:ID" use="required"/>
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+      <xs:element name="DigestValue" type="ds:DigestValueType"/>
+      <xs:complexType name="DigestValueType">
+        <xs:simpleContent>
+          <xs:extension base="xs:base64Binary">
+            <xs:attribute name="Id" type="xs:ID" use="optional"/>
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+      <xs:element name="SignatureValue" type="ds:SignatureValueType"/>
+      <xs:complexType name="SignatureValueType">
+        <xs:simpleContent>
+          <xs:extension base="xs:base64Binary">
+            <xs:attribute name="Id" type="xs:ID" use="required"/>
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+      <xs:element name="X509IssuerName" type="ds:X509IssuerNameType"/>
+      <xs:simpleType name="X509IssuerNameType">
+        <xs:restriction base="xs:string"/>
+      </xs:simpleType>
+      <xs:element name="X509SerialNumber" type="ds:X509SerialNumberType"/>
+      <xs:simpleType name="X509SerialNumberType">
+        <xs:restriction base="xs:integer"/>
+      </xs:simpleType>
+    </xs:schema>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://www.cartaodecidadao.pt/ccc/commons/messages/Attribute" xmlns:types="http://www.cartaodecidadao.pt/ccc/commons/messages/Types" xmlns:tam="http://www.cartaodecidadao.pt/ccc/commons/messages/TypesAttributeManagment" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns="http://www.cartaodecidadao.pt/ccc/commons/messages/Attribute">
+      <xsd:element name="Attribute" type="AttributeType"/>
+      <xsd:complexType name="AttributeType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="1" minOccurs="1" name="AttributeSupplier" type="AttributeSupplierType"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="Date" type="types:DateType"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="Validity" type="types:ValidityType"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="PersonalData" type="PersonalDataType"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="MainAttribute" type="MainAttributeType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SignatureAttribute" type="ds:SignatureType"/>
+      <xsd:complexType name="AttributeSupplierType">
+        <xsd:sequence>
+          <xsd:element name="Id" type="xsd:anyURI"/>
+          <xsd:element name="Name" type="types:NameType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Type">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="INSTITUTION"/>
+                <xsd:enumeration value="ENTERPRISE"/>
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Watermark" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PersonalDataType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="1" minOccurs="1" name="Name" type="types:NameType"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="NIC" type="types:NICType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="ExtraIDList" type="ExtraIDListType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ExtraIDListType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="1" name="ExtraID" type="ExtraIDType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ExtraIDType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="1" minOccurs="1" name="Name" type="types:NameType"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="Value" type="types:ExtraIDValueType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="MainAttributeType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="1" minOccurs="1" name="AttributeID" type="types:AttributeIDType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Description" type="types:DescriptionType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="LegalActList" type="LegalActListType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="SubAttributeList" type="SubAttributeListType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LegalActListType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="1" name="LegalAct" type="types:LegalActType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SubAttributeListType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="1" name="SubAttribute" type="SubAttributeType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SubAttributeType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="1" minOccurs="1" name="AttributeID" type="types:AttributeIDType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Description" type="types:DescriptionType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Value" type="types:SubAttributeValueType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="LegalActList" type="LegalActListType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="OperationCode" type="tam:CrudCodeType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Type" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://www.cartaodecidadao.pt/ccc/commons/messages/Types" xmlns="http://www.cartaodecidadao.pt/ccc/commons/messages/Types">
+      <xsd:simpleType name="ProcessIDType">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="40"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="NameType">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="255"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ValidityType">
+        <xsd:restriction base="xsd:date"/>
+      </xsd:simpleType>
+      <xsd:simpleType name="DateType">
+        <xsd:restriction base="xsd:date"/>
+      </xsd:simpleType>
+      <xsd:simpleType name="NICType">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="255"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CompanyNameType">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="255"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="NIPCType">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="255"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ExtraIDValueType">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="255"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="AttributeIDType">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="255"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="EnterpriseURIID">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="255"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="LegalActType">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="2048"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="SubAttributeValueType">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="255"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="DescriptionType">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="255"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="isDelegableType">
+        <xsd:restriction base="xsd:boolean"/>
+      </xsd:simpleType>
+      <xsd:simpleType name="EmailAddressType">
+        <xsd:restriction base="xsd:string">
+          <xsd:pattern value="[^@]+@[^\.]+\..+"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:schema>
+    <xs:schema targetNamespace="http://uri.etsi.org/01903/v1.3.2#" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:etsi="http://uri.etsi.org/01903/v1.3.2#" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:att="http://www.cartaodecidadao.pt/ccc/commons/messages/Attribute">
+      <xs:annotation>
+        <xs:documentation>XAdES schema for QualifyingProperties from ETSI</xs:documentation>
+      </xs:annotation>
+      <xs:element name="QualifyingProperties" type="etsi:QualifyingPropertiesType"/>
+      <xs:complexType name="QualifyingPropertiesType">
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="1" ref="etsi:SignedProperties"/>
+          <xs:element maxOccurs="1" minOccurs="0" ref="etsi:UnsignedProperties"/>
+        </xs:sequence>
+        <xs:attribute name="Target" type="xs:anyURI" use="required"/>
+      </xs:complexType>
+      <xs:element name="SignedProperties" type="etsi:SignedPropertiesType"/>
+      <xs:complexType name="SignedPropertiesType">
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="1" ref="etsi:SignedSignatureProperties"/>
+        </xs:sequence>
+        <xs:attribute name="Id" type="xs:ID" use="required"/>
+      </xs:complexType>
+      <xs:element name="SignedSignatureProperties" type="etsi:SignedSignaturePropertiesType"/>
+      <xs:complexType name="SignedSignaturePropertiesType">
+        <xs:sequence>
+          <xs:element ref="etsi:SigningTime"/>
+          <xs:element ref="etsi:SigningCertificate"/>
+          <xs:element minOccurs="0" ref="etsi:SignerRole"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SigningCertificate" type="etsi:SigningCertificateType"/>
+      <xs:complexType name="SigningCertificateType">
+        <xs:sequence>
+          <xs:element ref="etsi:Cert"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Cert" type="etsi:CertType"/>
+      <xs:complexType name="CertType">
+        <xs:sequence>
+          <xs:element ref="etsi:CertDigest"/>
+          <xs:element ref="etsi:IssuerSerial"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CertDigest" type="etsi:CertDigestType"/>
+      <xs:complexType name="CertDigestType">
+        <xs:sequence>
+          <xs:element ref="ds:DigestMethod"/>
+          <xs:element ref="ds:DigestValue"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="IssuerSerial" type="etsi:IssuerSerialType"/>
+      <xs:complexType name="IssuerSerialType">
+        <xs:sequence>
+          <xs:element ref="ds:X509IssuerName"/>
+          <xs:element ref="ds:X509SerialNumber"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SigningTime" type="etsi:SigningTimeType"/>
+      <xs:simpleType name="SigningTimeType">
+        <xs:restriction base="xs:dateTime"/>
+      </xs:simpleType>
+      <xs:element name="SignerRole" type="etsi:SignerRoleType"/>
+      <xs:complexType name="SignerRoleType">
+        <xs:sequence>
+          <xs:element ref="etsi:ClaimedRoles"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ClaimedRoles" type="etsi:ClaimedRolesListType"/>
+      <xs:complexType name="ClaimedRolesListType">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" ref="etsi:ClaimedRole"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ClaimedRole" type="etsi:ClaimedRoleType"/>
+      <xs:complexType name="ClaimedRoleType">
+        <xs:sequence>
+          <xs:element ref="att:SignatureAttribute"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="UnsignedProperties" type="etsi:UnsignedPropertiesType"/>
+      <xs:complexType name="UnsignedPropertiesType">
+        <xs:sequence>
+          <xs:element ref="etsi:UnsignedSignatureProperties"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="UnsignedSignatureProperties" type="etsi:UnsignedSignaturePropertiesType"/>
+      <xs:complexType name="UnsignedSignaturePropertiesType">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="etsi:CounterSignature"/>
+          <xs:element ref="etsi:SignatureTimeStamp"/>
+          <xs:element ref="etsi:CompleteCertificateRefs"/>
+          <xs:element ref="etsi:CompleteRevocationRefs"/>
+          <xs:element ref="etsi:SigAndRefsTimeStamp"/>
+          <xs:element ref="etsi:CertificateValues"/>
+          <xs:element ref="etsi:RevocationValues"/>
+          <xs:element ref="etsi:ArchiveTimeStamp"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CounterSignature" type="etsi:CounterSignatureType"/>
+      <xs:complexType name="CounterSignatureType">
+        <xs:sequence>
+          <xs:element ref="ds:Signature"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SignatureTimeStamp" type="etsi:SignatureTimeStampType"/>
+      <xs:complexType name="SignatureTimeStampType">
+        <xs:sequence>
+          <xs:element ref="ds:CanonicalizationMethod"/>
+          <xs:element ref="etsi:EncapsulatedTimeStamp"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="EncapsulatedTimeStamp" type="etsi:EncapsulatedTimeStampType"/>
+      <xs:simpleType name="EncapsulatedTimeStampType">
+        <xs:restriction base="xs:base64Binary"/>
+      </xs:simpleType>
+      <xs:element name="CompleteCertificateRefs" type="etsi:CompleteCertificateRefsType"/>
+      <xs:complexType name="CompleteCertificateRefsType">
+        <xs:sequence>
+          <xs:element ref="etsi:CertRefs"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CertRefs" type="etsi:CertRefsType"/>
+      <xs:complexType name="CertRefsType">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" ref="etsi:Cert"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CompleteRevocationRefs" type="etsi:CompleteRevocationRefsType"/>
+      <xs:complexType name="CompleteRevocationRefsType">
+        <xs:sequence>
+          <xs:element ref="etsi:CRLRefs"/>
+          <xs:element ref="etsi:OCSPRefs"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CRLRefs" type="etsi:CRLRefsType"/>
+      <xs:complexType name="CRLRefsType">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" ref="etsi:CRLRef"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CRLRef" type="etsi:CRLRefType"/>
+      <xs:complexType name="CRLRefType">
+        <xs:sequence>
+          <xs:element ref="etsi:DigestAlgAndValue"/>
+          <xs:element ref="etsi:CRLIdentifier"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DigestAlgAndValue" type="etsi:DigestAlgAndValueType"/>
+      <xs:complexType name="DigestAlgAndValueType">
+        <xs:sequence>
+          <xs:element ref="ds:DigestMethod"/>
+          <xs:element ref="ds:DigestValue"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CRLIdentifier" type="etsi:CRLIdentifierType"/>
+      <xs:complexType name="CRLIdentifierType">
+        <xs:sequence>
+          <xs:element ref="etsi:Issuer"/>
+          <xs:element ref="etsi:IssueTime"/>
+          <xs:element ref="etsi:Number"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Issuer"/>
+      <xs:simpleType name="IssuerType">
+        <xs:restriction base="xs:string"/>
+      </xs:simpleType>
+      <xs:element name="IssueTime"/>
+      <xs:simpleType name="IssueTimeType">
+        <xs:restriction base="xs:dateTime"/>
+      </xs:simpleType>
+      <xs:element name="Number"/>
+      <xs:simpleType name="NumberType">
+        <xs:restriction base="xs:integer"/>
+      </xs:simpleType>
+      <xs:element name="OCSPRefs" type="etsi:OCSPRefsType"/>
+      <xs:complexType name="OCSPRefsType">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" ref="etsi:OCSPRef"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="OCSPRef" type="etsi:OCSPRefType"/>
+      <xs:complexType name="OCSPRefType">
+        <xs:sequence>
+          <xs:element ref="etsi:OCSPIdentifier"/>
+          <xs:element ref="etsi:DigestAlgAndValue"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="OCSPIdentifier" type="etsi:OCSPIdentifierType"/>
+      <xs:complexType name="OCSPIdentifierType">
+        <xs:sequence>
+          <xs:element ref="etsi:ResponderID"/>
+          <xs:element ref="etsi:ProducedAt"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ResponderID" type="etsi:ResponderIDType"/>
+      <xs:complexType name="ResponderIDType">
+        <xs:sequence>
+          <xs:element ref="etsi:ByName"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ByName"/>
+      <xs:simpleType name="ByNameType">
+        <xs:restriction base="xs:string"/>
+      </xs:simpleType>
+      <xs:element name="ProducedAt"/>
+      <xs:simpleType name="ProducedAtType">
+        <xs:restriction base="xs:dateTime"/>
+      </xs:simpleType>
+      <xs:element name="SigAndRefsTimeStamp" type="etsi:SigAndRefsTimeStampType"/>
+      <xs:complexType name="SigAndRefsTimeStampType">
+        <xs:sequence>
+          <xs:element ref="ds:CanonicalizationMethod"/>
+          <xs:element ref="etsi:EncapsulatedTimeStamp"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CertificateValues" type="etsi:CertificateValuesType"/>
+      <xs:complexType name="CertificateValuesType">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" ref="etsi:EncapsulatedX509Certificate"/>
+        </xs:sequence>
+        <xs:attribute name="Id" type="xs:ID" use="required"/>
+      </xs:complexType>
+      <xs:element name="EncapsulatedX509Certificate" type="etsi:EncapsulatedX509CertificateType"/>
+      <xs:complexType name="EncapsulatedX509CertificateType">
+        <xs:simpleContent>
+          <xs:extension base="xs:base64Binary">
+            <xs:attribute name="Id" type="xs:ID" use="required"/>
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+      <xs:element name="RevocationValues" type="etsi:RevocationValuesType"/>
+      <xs:complexType name="RevocationValuesType">
+        <xs:sequence>
+          <xs:element ref="etsi:CRLValues"/>
+          <xs:element ref="etsi:OCSPValues"/>
+        </xs:sequence>
+        <xs:attribute name="Id" type="xs:ID" use="required"/>
+      </xs:complexType>
+      <xs:element name="CRLValues" type="etsi:CRLValuesType"/>
+      <xs:complexType name="CRLValuesType">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" ref="etsi:EncapsulatedCRLValue"/>
+        </xs:sequence>
+        <xs:attribute name="Id" type="xs:ID" use="required"/>
+      </xs:complexType>
+      <xs:element name="EncapsulatedCRLValue" type="etsi:EncapsulatedCRLValueType"/>
+      <xs:complexType name="EncapsulatedCRLValueType">
+        <xs:simpleContent>
+          <xs:extension base="xs:base64Binary">
+            <xs:attribute name="Id" type="xs:ID" use="required"/>
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+      <xs:element name="OCSPValues" type="etsi:OCSPValuesType"/>
+      <xs:complexType name="OCSPValuesType">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" ref="etsi:EncapsulatedOCSPValue"/>
+        </xs:sequence>
+        <xs:attribute name="Id" type="xs:ID" use="required"/>
+      </xs:complexType>
+      <xs:element name="EncapsulatedOCSPValue" type="etsi:EncapsulatedOCSPValueType"/>
+      <xs:complexType name="EncapsulatedOCSPValueType">
+        <xs:simpleContent>
+          <xs:extension base="xs:base64Binary">
+            <xs:attribute name="Id" type="xs:ID" use="required"/>
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+      <xs:element name="ArchiveTimeStamp" type="etsi:ArchiveTimeStampType"/>
+      <xs:complexType name="ArchiveTimeStampType">
+        <xs:sequence>
+          <xs:element ref="ds:CanonicalizationMethod"/>
+          <xs:element ref="etsi:EncapsulatedTimeStamp"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema targetNamespace="http://www.cartaodecidadao.pt/ccc/commons/messages/SVG" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:svg="http://www.cartaodecidadao.pt/ccc/commons/messages/SVG">
+      <xs:annotation>
+        <xs:documentation>SVG schema for i-roles</xs:documentation>
+      </xs:annotation>
+      <xs:element name="SVGList" type="svg:SVGListType"/>
+      <xs:complexType name="SVGListType">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="1" ref="svg:SVG"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SVG" type="svg:SVGType"/>
+      <xs:simpleType name="SVGType">
+        <xs:restriction base="xs:base64Binary"/>
+      </xs:simpleType>
+    </xs:schema>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://www.cartaodecidadao.pt/ccc/commons/messages/TypesAttributeManagment" xmlns="http://www.cartaodecidadao.pt/ccc/commons/messages/TypesAttributeManagment">
+      <xsd:simpleType name="CrudCodeType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="UPDATE"/>
+          <xsd:enumeration value="REMOVE"/>
+          <xsd:enumeration value="CREATE"/>
+          <xsd:enumeration value="IDLE"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="AttributesResponse">
+    <wsdl:part element="attman:AttributeResponse" name="VerifyResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AttributeRequest">
+    <wsdl:part element="attman:AttributeRequest" name="VerifyRequest"/>
+  </wsdl:message>
+  <wsdl:portType name="AttributeClientService">
+    <wsdl:operation name="Attributes">
+      <wsdl:input message="tns:AttributeRequest"/>
+      <wsdl:output message="tns:AttributesResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AttributeClientServiceBinding" type="tns:AttributeClientService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Attributes">
+      <soap:operation soapAction="http://www.cartaodecidadao.pt/services/ccc/ACS/Operations/Attributes"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ACService">
+    <wsdl:port binding="tns:AttributeClientServiceBinding" name="AttributeClientServicePort">
+      <soap:address location="http://preprod.mw.autenticacao.gov.pt/AttributeService/DSS/ACService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
