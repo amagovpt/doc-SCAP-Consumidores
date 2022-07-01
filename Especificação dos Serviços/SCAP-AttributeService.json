@@ -1,334 +1,210 @@
-{
-  "openapi": "3.0.1",
-  "info": {
-    "title": "SCAP - Attribute Service",
-    "version": "v2.0"
-  },
-  "servers": [
-    {
-      "url": "https://scap.autenticacao.gov.pt",
-      "description": "SCAP Server url"
-    }
-  ],
-  "paths": {
-    "/SCAPAttributeService/searchCitizenAttributesRequest": {
-      "post": {
-        "tags": [
-          "attribute-service-request-controller"
-        ],
-        "operationId": "searchCitizenAttributesRequest",
-        "parameters": [
-          {
-            "name": "FAAuthorization",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "X-SSL-Cert",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CitizenAttributesExternalRequestDTO"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Ok"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          }
-        }
-      }
-    },
-    "/SCAPAttributeService/getCitizenAttributesResponse": {
-      "post": {
-        "tags": [
-          "attribute-service-request-controller"
-        ],
-        "operationId": "getCitizenAttributesResponse",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RequestBaseDTO"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/CitizenAttributesExternalResponseDTO"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/SCAPAttributeService/searchAttributeProviderInstitutionsRequest": {
-      "get": {
-        "tags": [
-          "attribute-service-request-controller"
-        ],
-        "operationId": "searchAttributeProviderInstitutionsRequest",
-        "parameters": [
-          {
-            "name": "processId",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/SearchAttributeProviderExternalResponseDTO"
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "components": {
-    "schemas": {
-      "CitizenAttributesExternalRequestDTO": {
-        "required": [
-          "citizenInfo",
-          "clientName",
-          "credentialId",
-          "processId"
-        ],
-        "type": "object",
-        "properties": {
-          "processId": {
-            "type": "string"
-          },
-          "citizenInfo": {
-            "$ref": "#/components/schemas/CitizenInfoDTO"
-          },
-          "searchAllEnterpriseAttributes": {
-            "type": "boolean"
-          },
-          "searchAllEmployeeAttributes": {
-            "type": "boolean"
-          },
-          "attributeProviderUriIds": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "credentialId": {
-            "type": "string"
-          },
-          "clientName": {
-            "type": "string"
-          }
-        }
-      },
-      "CitizenDocumentInfoDTO": {
-        "required": [
-          "country",
-          "id",
-          "type"
-        ],
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string"
-          },
-          "country": {
-            "type": "string"
-          },
-          "id": {
-            "type": "string"
-          }
-        }
-      },
-      "CitizenInfoDTO": {
-        "required": [
-          "citizenDocumentInfo"
-        ],
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "citizenDocumentInfo": {
-            "$ref": "#/components/schemas/CitizenDocumentInfoDTO"
-          }
-        }
-      },
-      "RequestBaseDTO": {
-        "required": [
-          "processId"
-        ],
-        "type": "object",
-        "properties": {
-          "processId": {
-            "type": "string"
-          }
-        }
-      },
-      "AttributeDTO": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "validity": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "subAttributes": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SubAttributeDTO"
-            }
-          }
-        }
-      },
-      "AttributeProviderExternalInfoDTO": {
-        "type": "object",
-        "properties": {
-          "uriId": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "type": {
-            "type": "string"
-          },
-          "nipc": {
-            "type": "string"
-          },
-          "certificate": {
-            "type": "string"
-          }
-        }
-      },
-      "CitizenAttributeSupplierAttributeExternalResponseDTO": {
-        "type": "object",
-        "properties": {
-          "processId": {
-            "type": "string"
-          },
-          "status": {
-            "$ref": "#/components/schemas/StatusDTO"
-          },
-          "attributeProviderInfo": {
-            "$ref": "#/components/schemas/AttributeProviderExternalInfoDTO"
-          },
-          "attributes": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/AttributeDTO"
-            }
-          }
-        }
-      },
-      "CitizenAttributesExternalResponseDTO": {
-        "type": "object",
-        "properties": {
-          "processId": {
-            "type": "string"
-          },
-          "status": {
-            "$ref": "#/components/schemas/StatusDTO"
-          },
-          "citizenInfo": {
-            "$ref": "#/components/schemas/CitizenInfoDTO"
-          },
-          "citizenAttributes": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CitizenAttributeSupplierAttributeExternalResponseDTO"
-            }
-          },
-          "secretKey": {
-            "type": "string"
-          },
-          "completed": {
-            "type": "boolean"
-          }
-        }
-      },
-      "StatusDTO": {
-        "type": "object",
-        "properties": {
-          "code": {
-            "type": "string"
-          },
-          "message": {
-            "type": "string"
-          }
-        }
-      },
-      "SubAttributeDTO": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "value": {
-            "type": "string"
-          }
-        }
-      },
-      "SearchAttributeProviderExternalResponseDTO": {
-        "type": "object",
-        "properties": {
-          "processId": {
-            "type": "string"
-          },
-          "status": {
-            "$ref": "#/components/schemas/StatusDTO"
-          },
-          "attributeProviders": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/AttributeProviderExternalInfoDTO"
-            }
-          }
-        }
-      }
-    }
-  }
-}
+openapi: 3.0.1
+info:
+  title: SCAP - Attribute Service
+  version: v2.0
+servers:
+  - url: https://scap.autenticacao.gov.pt
+    description: SCAP Server url
+paths:
+  /SCAPAttributeService/searchAttributeProviderInstitutionsRequest:
+    get:
+      tags:
+        - attribute-service-request-controller
+      operationId: searchAttributeProviderInstitutionsRequest
+      parameters:
+        - name: processId
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SearchAttributeProviderExternalResponseDTO'
+  /SCAPAttributeService/searchCitizenAttributesRequest:
+    post:
+      tags:
+        - attribute-service-request-controller
+      operationId: searchCitizenAttributesRequest
+      parameters:
+        - name: FAAuthorization
+          in: header
+          required: false
+          schema:
+            type: string
+        - name: X-SSL-Cert
+          in: header
+          required: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CitizenAttributesExternalRequestDTO'
+        required: true
+      responses:
+        '200':
+          description: Ok
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+  /SCAPAttributeService/getCitizenAttributesResponse:
+    post:
+      tags:
+        - attribute-service-request-controller
+      operationId: getCitizenAttributesResponse
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestBaseDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CitizenAttributesExternalResponseDTO'
+components:
+  schemas:
+    AttributeProviderExternalInfoDTO:
+      type: object
+      properties:
+        uriId:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+        nipc:
+          type: string
+    SearchAttributeProviderExternalResponseDTO:
+      type: object
+      properties:
+        processId:
+          type: string
+        status:
+          $ref: '#/components/schemas/StatusDTO'
+        attributeProviders:
+          type: array
+          items:
+            $ref: '#/components/schemas/AttributeProviderExternalInfoDTO'
+    StatusDTO:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+    CitizenAttributesExternalRequestDTO:
+      required:
+        - citizenInfo
+        - clientName
+        - credentialId
+        - processId
+      type: object
+      properties:
+        processId:
+          type: string
+        citizenInfo:
+          $ref: '#/components/schemas/CitizenInfoDTO'
+        searchAllEnterpriseAttributes:
+          type: boolean
+        searchAllEmployeeAttributes:
+          type: boolean
+        attributeProviderUriIds:
+          type: array
+          items:
+            type: string
+        credentialId:
+          type: string
+        clientName:
+          type: string
+    CitizenDocumentInfoDTO:
+      required:
+        - country
+        - id
+        - type
+      type: object
+      properties:
+        type:
+          type: string
+        country:
+          type: string
+        id:
+          type: string
+    CitizenInfoDTO:
+      required:
+        - citizenDocumentInfo
+      type: object
+      properties:
+        name:
+          type: string
+        citizenDocumentInfo:
+          $ref: '#/components/schemas/CitizenDocumentInfoDTO'
+    RequestBaseDTO:
+      required:
+        - processId
+      type: object
+      properties:
+        processId:
+          type: string
+    AttributeDTO:
+      type: object
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+        validity:
+          type: string
+          format: date-time
+        subAttributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubAttributeDTO'
+    CitizenAttributeSupplierAttributeExternalResponseDTO:
+      type: object
+      properties:
+        processId:
+          type: string
+        status:
+          $ref: '#/components/schemas/StatusDTO'
+        attributeProviderInfo:
+          $ref: '#/components/schemas/AttributeProviderExternalInfoDTO'
+        attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/AttributeDTO'
+    CitizenAttributesExternalResponseDTO:
+      type: object
+      properties:
+        processId:
+          type: string
+        status:
+          $ref: '#/components/schemas/StatusDTO'
+        citizenInfo:
+          $ref: '#/components/schemas/CitizenInfoDTO'
+        citizenAttributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/CitizenAttributeSupplierAttributeExternalResponseDTO'
+        secretKey:
+          type: string
+        completed:
+          type: boolean
+    SubAttributeDTO:
+      type: object
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+        value:
+          type: string

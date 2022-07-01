@@ -1,431 +1,284 @@
-{
-  "openapi": "3.0.1",
-  "info": {
-    "title": "SCAP - Signature Service",
-    "version": "v2.0"
-  },
-  "servers": [
-    {
-      "url": "https://scap.autenticacao.gov.pt",
-      "description": "SCAP Server url"
-    }
-  ],
-  "paths": {
-    "/SCAPSignatureService/getSignHashResult": {
-      "post": {
-        "tags": [
-          "ss-controller"
-        ],
-        "operationId": "getSignHashResult",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/SSGetSignatureRequestDTO"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/SSGetSignatureResponseDTO"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/SCAPSignatureService/signHash": {
-      "post": {
-        "tags": [
-          "ss-controller"
-        ],
-        "operationId": "signHash",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/SSSignHashRequestDTO"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Ok"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          }
-        }
-      }
-    },
-    "/SCAPSignatureService/signHashAuthorization": {
-      "post": {
-        "tags": [
-          "ss-controller"
-        ],
-        "operationId": "signHashAuthorization",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/SSAuthorizationRequestDTO"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Ok",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/SSAuthorizationResponseDTO"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/SSAuthorizationResponseDTO"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/SSAuthorizationResponseDTO"
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "components": {
-    "schemas": {
-      "SSGetSignatureRequestDTO": {
-        "required": [
-          "processId",
-          "sad",
-          "transactionId"
-        ],
-        "type": "object",
-        "properties": {
-          "processId": {
-            "type": "string"
-          },
-          "sad": {
-            "type": "string"
-          },
-          "transactionId": {
-            "type": "string"
-          }
-        }
-      },
-      "SSGetSignatureResponseDTO": {
-        "type": "object",
-        "properties": {
-          "processId": {
-            "type": "string"
-          },
-          "status": {
-            "$ref": "#/components/schemas/StatusDTO"
-          },
-          "signatures": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        }
-      },
-      "StatusDTO": {
-        "type": "object",
-        "properties": {
-          "code": {
-            "type": "string"
-          },
-          "message": {
-            "type": "string"
-          }
-        }
-      },
-      "SSSignHashRequestDTO": {
-        "required": [
-          "clientName",
-          "credentialId",
-          "hashes",
-          "processId",
-          "sad",
-          "totp",
-          "transactionId"
-        ],
-        "type": "object",
-        "properties": {
-          "processId": {
-            "type": "string"
-          },
-          "credentialId": {
-            "type": "string"
-          },
-          "totp": {
-            "type": "string"
-          },
-          "sad": {
-            "type": "string"
-          },
-          "transactionId": {
-            "type": "string"
-          },
-          "hashes": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "clientName": {
-            "type": "string"
-          }
-        }
-      },
-      "SSAttributeDTO": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "validity": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "subAttributes": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SSSubAttributeDTO"
-            }
-          }
-        }
-      },
-      "SSAttributeProviderAttributesDTO": {
-        "required": [
-          "attributeProviderInfo",
-          "attributes"
-        ],
-        "type": "object",
-        "properties": {
-          "attributeProviderInfo": {
-            "$ref": "#/components/schemas/SSAttributeProviderInfoDTO"
-          },
-          "attributes": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SSAttributeDTO"
-            }
-          }
-        }
-      },
-      "SSAttributeProviderInfoDTO": {
-        "required": [
-          "name",
-          "type",
-          "uriId"
-        ],
-        "type": "object",
-        "properties": {
-          "uriId": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "type": {
-            "type": "string"
-          }
-        }
-      },
-      "SSAttributeProviderSignatureInfoDTO": {
-        "required": [
-          "attributesToSign"
-        ],
-        "type": "object",
-        "properties": {
-          "attributesToSign": {
-            "$ref": "#/components/schemas/SSAttributeProviderAttributesDTO"
-          }
-        }
-      },
-      "SSAuthorizationRequestDTO": {
-        "required": [
-          "attributeProviderSignatures",
-          "citizenCertificate",
-          "citizenInfo",
-          "clientName",
-          "credentialId",
-          "numSignatures",
-          "originalHashesInfo",
-          "processId",
-          "totp"
-        ],
-        "type": "object",
-        "properties": {
-          "processId": {
-            "type": "string"
-          },
-          "credentialId": {
-            "type": "string"
-          },
-          "totp": {
-            "type": "string"
-          },
-          "numSignatures": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "originalHashesInfo": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SSHashInfoDTO"
-            }
-          },
-          "attributeProviderSignatures": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SSAttributeProviderSignatureInfoDTO"
-            }
-          },
-          "citizenInfo": {
-            "$ref": "#/components/schemas/SSCitizenInfoDTO"
-          },
-          "citizenCertificate": {
-            "type": "string"
-          },
-          "clientName": {
-            "type": "string"
-          }
-        }
-      },
-      "SSCitizenDocumentInfoDTO": {
-        "required": [
-          "country",
-          "id",
-          "type"
-        ],
-        "type": "object",
-        "properties": {
-          "type": {
-            "pattern": "BI|PAS|CT:|TR:",
-            "type": "string"
-          },
-          "country": {
-            "pattern": "^[A-Z]{2}$",
-            "type": "string"
-          },
-          "id": {
-            "pattern": "^[0-9a-zA-Z]{3,20}$",
-            "type": "string"
-          }
-        }
-      },
-      "SSCitizenInfoDTO": {
-        "required": [
-          "citizenDocumentInfo"
-        ],
-        "type": "object",
-        "properties": {
-          "citizenDocumentInfo": {
-            "$ref": "#/components/schemas/SSCitizenDocumentInfoDTO"
-          }
-        }
-      },
-      "SSHashInfoDTO": {
-        "required": [
-          "documentName",
-          "hash"
-        ],
-        "type": "object",
-        "properties": {
-          "hash": {
-            "type": "string"
-          },
-          "documentName": {
-            "type": "string"
-          }
-        }
-      },
-      "SSSubAttributeDTO": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "value": {
-            "type": "string"
-          }
-        }
-      },
-      "SSAuthorizationResponseDTO": {
-        "type": "object",
-        "properties": {
-          "processId": {
-            "type": "string"
-          },
-          "status": {
-            "$ref": "#/components/schemas/StatusDTO"
-          },
-          "transactions": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SSSignHashTransactionDTO"
-            }
-          },
-          "originalHashesInfo": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SSHashInfoDTO"
-            }
-          }
-        }
-      },
-      "SSSignHashTransactionDTO": {
-        "type": "object",
-        "properties": {
-          "sad": {
-            "type": "string"
-          },
-          "transactionId": {
-            "type": "string"
-          },
-          "attributeProviderSignatures": {
-            "$ref": "#/components/schemas/SSAttributeProviderSignatureInfoDTO"
-          }
-        }
-      }
-    }
-  }
-}
+openapi: 3.0.1
+info:
+  title: SCAP - Signature Service
+  version: v2.0
+servers:
+  - url: https://scap.autenticacao.gov.pt
+    description: SCAP Server url
+paths:
+  /SCAPSignatureService/getSignHashResult:
+    post:
+      tags:
+        - ss-controller
+      operationId: getSignHashResult
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SSGetSignatureRequestDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SSGetSignatureResponseDTO'
+  /SCAPSignatureService/signHash:
+    post:
+      tags:
+        - ss-controller
+      operationId: signHash
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SSSignHashRequestDTO'
+        required: true
+      responses:
+        '200':
+          description: Ok
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+  /SCAPSignatureService/signHashAuthorization:
+    post:
+      tags:
+        - ss-controller
+      operationId: signHashAuthorization
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SSAuthorizationRequestDTO'
+        required: true
+      responses:
+        '200':
+          description: Ok
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SSAuthorizationResponseDTO'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SSAuthorizationResponseDTO'
+        '401':
+          description: Unauthorized
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SSAuthorizationResponseDTO'
+components:
+  schemas:
+    SSGetSignatureRequestDTO:
+      required:
+        - processId
+        - sad
+        - transactionId
+      type: object
+      properties:
+        processId:
+          type: string
+        sad:
+          type: string
+        transactionId:
+          type: string
+    SSGetSignatureResponseDTO:
+      type: object
+      properties:
+        processId:
+          type: string
+        status:
+          $ref: '#/components/schemas/StatusDTO'
+        signatures:
+          type: array
+          items:
+            type: string
+    StatusDTO:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+    SSSignHashRequestDTO:
+      required:
+        - clientName
+        - credentialId
+        - hashes
+        - processId
+        - sad
+        - totp
+        - transactionId
+      type: object
+      properties:
+        processId:
+          type: string
+        credentialId:
+          type: string
+        totp:
+          type: string
+        sad:
+          type: string
+        transactionId:
+          type: string
+        hashes:
+          type: array
+          items:
+            type: string
+        clientName:
+          type: string
+    SSAttributeDTO:
+      type: object
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+        validity:
+          type: string
+          format: date-time
+        subAttributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/SSSubAttributeDTO'
+    SSAttributeProviderAttributesDTO:
+      required:
+        - attributeProviderInfo
+        - attributes
+      type: object
+      properties:
+        attributeProviderInfo:
+          $ref: '#/components/schemas/SSAttributeProviderInfoDTO'
+        attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/SSAttributeDTO'
+    SSAttributeProviderInfoDTO:
+      required:
+        - name
+        - type
+        - uriId
+      type: object
+      properties:
+        uriId:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+        certificates:
+          type: string
+    SSAttributeProviderSignatureInfoDTO:
+      required:
+        - attributesToSign
+      type: object
+      properties:
+        attributesToSign:
+          $ref: '#/components/schemas/SSAttributeProviderAttributesDTO'
+    SSAuthorizationRequestDTO:
+      required:
+        - attributeProviderSignatures
+        - citizenCertificate
+        - citizenInfo
+        - clientName
+        - credentialId
+        - numSignatures
+        - originalHashesInfo
+        - processId
+        - totp
+      type: object
+      properties:
+        processId:
+          type: string
+        credentialId:
+          type: string
+        totp:
+          type: string
+        numSignatures:
+          type: integer
+          format: int32
+        originalHashesInfo:
+          type: array
+          items:
+            $ref: '#/components/schemas/SSHashInfoDTO'
+        attributeProviderSignatures:
+          type: array
+          items:
+            $ref: '#/components/schemas/SSAttributeProviderSignatureInfoDTO'
+        citizenInfo:
+          $ref: '#/components/schemas/SSCitizenInfoDTO'
+        citizenCertificate:
+          type: string
+        clientName:
+          type: string
+    SSCitizenDocumentInfoDTO:
+      required:
+        - country
+        - id
+        - type
+      type: object
+      properties:
+        type:
+          pattern: 'BI|PAS|CT:|TR:'
+          type: string
+        country:
+          pattern: ^[A-Z]{2}$
+          type: string
+        id:
+          pattern: ^[0-9a-zA-Z]{3,20}$
+          type: string
+    SSCitizenInfoDTO:
+      required:
+        - citizenDocumentInfo
+      type: object
+      properties:
+        citizenDocumentInfo:
+          $ref: '#/components/schemas/SSCitizenDocumentInfoDTO'
+    SSHashInfoDTO:
+      required:
+        - documentName
+        - hash
+      type: object
+      properties:
+        hash:
+          type: string
+        documentName:
+          type: string
+    SSSubAttributeDTO:
+      type: object
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+        value:
+          type: string
+    SSAuthorizationResponseDTO:
+      type: object
+      properties:
+        processId:
+          type: string
+        status:
+          $ref: '#/components/schemas/StatusDTO'
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/SSSignHashTransactionDTO'
+        originalHashesInfo:
+          type: array
+          items:
+            $ref: '#/components/schemas/SSHashInfoDTO'
+    SSSignHashTransactionDTO:
+      type: object
+      properties:
+        sad:
+          type: string
+        transactionId:
+          type: string
+        attributeProviderSignatures:
+          $ref: '#/components/schemas/SSAttributeProviderSignatureInfoDTO'
