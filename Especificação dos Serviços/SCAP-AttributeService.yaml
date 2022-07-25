@@ -6,24 +6,6 @@ servers:
   - url: https://scap.autenticacao.gov.pt
     description: SCAP Server url
 paths:
-  /SCAPAttributeService/searchAttributeProviderInstitutionsRequest:
-    get:
-      tags:
-        - attribute-service-request-controller
-      operationId: searchAttributeProviderInstitutionsRequest
-      parameters:
-        - name: processId
-          in: query
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: OK
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/SearchAttributeProviderExternalResponseDTO'
   /SCAPAttributeService/searchCitizenAttributesRequest:
     post:
       tags:
@@ -31,11 +13,6 @@ paths:
       operationId: searchCitizenAttributesRequest
       parameters:
         - name: FAAuthorization
-          in: header
-          required: false
-          schema:
-            type: string
-        - name: X-SSL-Cert
           in: header
           required: false
           schema:
@@ -71,37 +48,26 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/CitizenAttributesExternalResponseDTO'
+  /SCAPAttributeService/searchAttributeProviderInstitutionsRequest:
+    get:
+      tags:
+        - attribute-service-request-controller
+      operationId: searchAttributeProviderInstitutionsRequest
+      parameters:
+        - name: processId
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SearchAttributeProviderExternalResponseDTO'
 components:
   schemas:
-    AttributeProviderExternalInfoDTO:
-      type: object
-      properties:
-        uriId:
-          type: string
-        name:
-          type: string
-        type:
-          type: string
-        nipc:
-          type: string
-    SearchAttributeProviderExternalResponseDTO:
-      type: object
-      properties:
-        processId:
-          type: string
-        status:
-          $ref: '#/components/schemas/StatusDTO'
-        attributeProviders:
-          type: array
-          items:
-            $ref: '#/components/schemas/AttributeProviderExternalInfoDTO'
-    StatusDTO:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
     CitizenAttributesExternalRequestDTO:
       required:
         - citizenInfo
@@ -169,6 +135,19 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SubAttributeDTO'
+    AttributeProviderExternalInfoDTO:
+      type: object
+      properties:
+        uriId:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+        nipc:
+          type: string
+        logo:
+          type: string
     CitizenAttributeSupplierAttributeExternalResponseDTO:
       type: object
       properties:
@@ -199,6 +178,13 @@ components:
           type: string
         completed:
           type: boolean
+    StatusDTO:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
     SubAttributeDTO:
       type: object
       properties:
@@ -208,3 +194,14 @@ components:
           type: string
         value:
           type: string
+    SearchAttributeProviderExternalResponseDTO:
+      type: object
+      properties:
+        processId:
+          type: string
+        status:
+          $ref: '#/components/schemas/StatusDTO'
+        attributeProviders:
+          type: array
+          items:
+            $ref: '#/components/schemas/AttributeProviderExternalInfoDTO'
