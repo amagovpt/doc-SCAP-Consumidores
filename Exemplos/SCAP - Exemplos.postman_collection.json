@@ -52,7 +52,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://preprod.mw.autenticacao.gov.pt/SCAPAttributeService/searchAttributeProviderInstitutionsRequest?processId=\"7faad8d2-7de8-4fc9-a5a5-1a3595De3221\"",
+					"raw": "https://preprod.scap.autenticacao.gov.pt/SCAPAttributeService/searchAttributeProviderInstitutionsRequest?processId=\"7faad8d2-7de8-4fc9-a5a5-1a3595De3221\"",
 					"protocol": "https",
 					"host": [
 						"preprod",
@@ -117,7 +117,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://preprod.mw.autenticacao.gov.pt/SCAPAttributeService/searchCitizenAttributesRequest",
+					"raw": "https://preprod.scap.autenticacao.gov.pt/SCAPAttributeService/searchCitizenAttributesRequest",
 					"protocol": "https",
 					"host": [
 						"preprod",
@@ -177,7 +177,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://preprod.mw.autenticacao.gov.pt/SCAPAttributeService/getCitizenAttributesResponse",
+					"raw": "https://preprod.scap.autenticacao.gov.pt/SCAPAttributeService/getCitizenAttributesResponse",
 					"protocol": "https",
 					"host": [
 						"preprod",
@@ -225,7 +225,7 @@
 					"raw": "{\r\n  \"processId\": \"7faad8d2-7de8-afc9-a5a5-1a3595ce3436\",\r\n  \"credentialId\": \"541a0f53-34b5-4113-9260-64fef73cb700\",\r\n  \"totp\": \"987123\",\r\n  \"numSignatures\": 2,\r\n  \"documentHashesInfo\": [\r\n        {\r\n          \"originalDocumentHash\": \"JXk75eRy8Jl7GfjZ2qh+5p8ceElgzFMaCa0MLVDUJVk=\",\r\n          \"originalDocumentCitizenSignature\": \"RFlyANRA96kkm8rKpq3jxSfXYU6poeBgsQM0Y9x+IE6hjjqOLz2AWYpUaUuTXy8ng+UCHw3P1605UBaQfhx0r9OQjj/mge+syOLu+07XMPr05hyJGV3KVd+jgENhjbsiAMZr5JibhmDFVF3w+EQKuQdAWUhAvCm+e7qOFo/BjK0HiWKucYVZqwl1eHfX5VZWXJtg6DgoJiGBDVHIleIbmhplDBy+sfjTM6peKVVZoX8eJxppnZ6IQW/fSTVduO5BjiAyVFQ3Ee9pjN5j9VQ5JbMGUr82QFWpiO7g3uKesJXWUpYsR9vp9muqi02wDgz/mRiIY8drvPqY8ArTGKc487Hmzn5ftURCWy7JKX3lkq1413XIb1L9+auWcVjUpUca++nKFS+jDRVRp+YoYYrCl+sk2V29rqYe0M+v6ygoC0LLcrlM3CqBPIbQhu0TCRK4OQSbrVm83eawtufOi7P9IDjPvTW7GBR8XnlUSkQAPx6zr3XzrAdfzbeU4xnW1XZK\",\r\n          \"documentName\": \"Nome documento teste 2\"\r\n        },\r\n        {\r\n          \"originalDocumentHash\": \"JXk75eRy8Jl7GfjZ2qh+5p8ceElgzFMaCa0MLVDUJVk=\",\r\n          \"originalDocumentCitizenSignature\": \"RFlyANRA96kkm8rKpq3jxSfXYU6poeBgsQM0Y9x+IE6hjjqOLz2AWYpUaUuTXy8ng+UCHw3P1605UBaQfhx0r9OQjj/mge+syOLu+07XMPr05hyJGV3KVd+jgENhjbsiAMZr5JibhmDFVF3w+EQKuQdAWUhAvCm+e7qOFo/BjK0HiWKucYVZqwl1eHfX5VZWXJtg6DgoJiGBDVHIleIbmhplDBy+sfjTM6peKVVZoX8eJxppnZ6IQW/fSTVduO5BjiAyVFQ3Ee9pjN5j9VQ5JbMGUr82QFWpiO7g3uKesJXWUpYsR9vp9muqi02wDgz/mRiIY8drvPqY8ArTGKc487Hmzn5ftURCWy7JKX3lkq1413XIb1L9+auWcVjUpUca++nKFS+jDRVRp+YoYYrCl+sk2V29rqYe0M+v6ygoC0LLcrlM3CqBPIbQhu0TCRK4OQSbrVm83eawtufOi7P9IDjPvTW7GBR8XnlUSkQAPx6zr3XzrAdfzbeU4xnW1XZK\",\r\n          \"documentName\": \"Nome documento teste 2\"\r\n        }\r\n      ],\r\n  \"attributeProviderSignatures\": [\r\n    {\r\n      \"attributesToSign\": {\r\n        \"attributeProviderInfo\": {\r\n          \"uriId\": \"http://interop.gov.pt/SCAP/FornecedorTeste1\",\r\n          \"name\": \"FornecedorTeste1\",\r\n          \"type\": \"INSTITUTION\"\r\n        },\r\n        \"attributes\": [\r\n          {\r\n            \"id\": \"TesterId\",\r\n            \"description\": \"Tester\",\r\n            \"validity\": \"2022-03-18T11:29:07.393Z\",\r\n            \"subAttributes\": [\r\n              {\r\n                \"id\": \"DataInicioFuncoesId\",\r\n                \"description\": \"Data Inicio Funcoes\",\r\n                \"value\": \"2017-08-16\"\r\n              },\r\n              {\r\n                    \"id\": \"NumeroColaboradorId\",\r\n                    \"value\": \"01234567892\",\r\n                    \"description\": \"Numero Colaborador\"\r\n                },\r\n                {\r\n                    \"id\": \"http://incm.pt/DRE/Atributo/Cargo/Entidade/NIF\",\r\n                    \"value\": \"999999702\",\r\n                    \"description\": \"NIF entidade\"\r\n                },\r\n                {\r\n                    \"id\": \"http://incm.pt/DRE/Atributo/Cargo/Entidade/Nome\",\r\n                    \"value\": \"Entidade Teste publica 2\",\r\n                    \"description\": \"Nome entidade\"\r\n                }\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  ],\r\n  \"citizenInfo\": {\r\n    \"citizenDocumentInfo\": {\r\n      \"type\": \"BI\",\r\n      \"country\": \"PT\",\r\n      \"id\": \"13802352\"\r\n    }\r\n  },\r\n  \"citizenCertificate\":  \"-----BEGIN CERTIFICATE-----\\nMIII7zCCBtegAwIBAgIIFbDircO0RZswDQYJKoZIhvcNAQELBQAwgcExCzAJBgNV\\nBAYTAlBUMTMwMQYDVQQKDCpJbnN0aXR1dG8gZG9zIFJlZ2lzdG9zIGUgZG8gTm90\\nYXJpYWRvIEkuUC4xHDAaBgNVBAsME0NhcnTDo28gZGUgQ2lkYWTDo28xFDASBgNV\\nBAsMC3N1YkVDRXN0YWRvMUkwRwYDVQQDDEBFQyBkZSBBc3NpbmF0dXJhIERpZ2l0\\nYWwgUXVhbGlmaWNhZGEgZG8gQ2FydMOjbyBkZSBDaWRhZMOjbyAwMDE3MB4XDTIx\\nMTEwNjE4NTYzM1oXDTMxMDgwMzIyNTk1OVowgeQxCzAJBgNVBAYTAlBUMRwwGgYD\\nVQQKDBNDYXJ0w6NvIGRlIENpZGFkw6NvMSswKQYDVQQLDCJBc3NpbmF0dXJhIFF1\\nYWxpZmljYWRhIGRvIENpZGFkw6NvMRwwGgYDVQQLDBNDaWRhZMOjbyBQb3J0dWd1\\nw6pzMRkwFwYDVQQEDBBHT07Dh0FMVkVTIEJSw4FTMRQwEgYDVQQqDAtUSUFHTyBK\\nT1PDiTEUMBIGA1UEBRMLQkkxMzgwMjM1MjIxJTAjBgNVBAMMHFRJQUdPIEpPU8OJ\\nIEdPTsOHQUxWRVMgQlLDgVMwggGiMA0GCSqGSIb3DQEBAQUAA4IBjwAwggGKAoIB\\ngQDDur4IaS5MB5IB9wisp3XvsCCgN7oC1LI2s9wMcbNV3hZ+EdKMeqfZqXL/BerO\\n4QcyXaa+wvGZfJKIEwRcY+CXtBFuSW8Rb/dVxb1FTlW6Klp3wNLiw4G5AoqdPp6B\\n+bTLYQ8lvovQt3XZkktmzkUoC4cWpc9HcPzmvsvNdUL8KU8yEv+J+Nw8ctaAIL+3\\net1JSZrsNiDEvAHJ4QPCsKvvB7ANulSFYJyl4pNpfbfbNJdlcHv9hW9X/t++wonC\\nRESotCMKDxyO0V5gs+9JVUZbGA7+uxVqtxPnBBIVY5+QWE9nE5zB90qUTpBCuJ95\\n6M+iW6F8QxtZb5MNi//KbOFdULfA1qaoRl7tN6iQM143yTy1NgVMCq7B3Ga+OmT4\\nxBnoTfnu7K3yP61SYP7jtq4/nnM7MvMVQ1ctOaIyDFwH+KcU13/wE/QgLibg6WBD\\noBUfnUbajYWe6VbWt8hd00xA3Kci/WMaQnVUV23rmbP4bFddvCtmYBDyV4tVqkml\\nWzMCAwEAAaOCA0QwggNAMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAU0wOyQ99K\\nP1X3wrmhZ5yPB0dta04wSwYIKwYBBQUHAQEEPzA9MDsGCCsGAQUFBzABhi9odHRw\\nOi8vb2NzcC5hc2MuY2FydGFvZGVjaWRhZGFvLnB0L3B1YmxpY28vb2NzcDBvBgNV\\nHS4EaDBmMGSgYqBghl5odHRwOi8vcGtpLmNhcnRhb2RlY2lkYWRhby5wdC9wdWJs\\naWNvL2xyYy9jY19zdWItZWNfY2lkYWRhb19hc3NpbmF0dXJhX2NybDAwMTdfZGVs\\ndGFfcDAwMjEuY3JsMIIBBQYDVR0gBIH9MIH6MDUGCGCEbAEBAQIKMCkwJwYIKwYB\\nBQUHAgEWG2h0dHBzOi8vd3d3LnNjZWUuZ292LnB0L3JlcDAJBgcEAIvsQAECMFUG\\nDGCEbAEBAQIEAQABATBFMEMGCCsGAQUFBwIBFjdodHRwOi8vcGtpLmNhcnRhb2Rl\\nY2lkYWRhby5wdC9wdWJsaWNvL3BvbGl0aWNhcy9jcC5odG1sMAgGBgQAj3oBAjBV\\nBgtghGwBAQECBAEABzBGMEQGCCsGAQUFBwIBFjhodHRwOi8vcGtpLmNhcnRhb2Rl\\nY2lkYWRhby5wdC9wdWJsaWNvL3BvbGl0aWNhcy9jcHMuaHRtbDAoBgNVHQkEITAf\\nMB0GCCsGAQUFBwkBMREYDzE5OTAwMTE5MTIwMDAwWjCBgwYIKwYBBQUHAQMEdzB1\\nMAgGBgQAjkYBATAIBgYEAI5GAQQwEwYGBACORgEGMAkGBwQAjkYBBgEwSgYGBACO\\nRgEFMEAwPhY4aHR0cDovL3BraS5jYXJ0YW9kZWNpZGFkYW8ucHQvcHVibGljby9w\\nb2xpdGljYXMvY3BzLmh0bWwTAlBUMGkGA1UdHwRiMGAwXqBcoFqGWGh0dHA6Ly9w\\na2kuY2FydGFvZGVjaWRhZGFvLnB0L3B1YmxpY28vbHJjL2NjX3N1Yi1lY19jaWRh\\nZGFvX2Fzc2luYXR1cmFfY3JsMDAxN19wMDAyMS5jcmwwHQYDVR0OBBYEFCa3ia4k\\nsZbfwLxRDmRVYp2BjnPEMA4GA1UdDwEB/wQEAwIGQDANBgkqhkiG9w0BAQsFAAOC\\nAgEAMvSCxn+vTfj+WHQvNLYU5JYsA9bU0HH+/vx1XwANGrnpHlqjkMsaQq8DUklC\\ngSPH0nqQXrXVeGlc7kd/fS1/KVnvq2pVTLT3NKR4dnAFfBF6+prF16zyqTn5nWsY\\nLpM9CObQO9V1plB3FG4yjruJSU7mPwCgD1ofVEeaHwD7i9Zqu7WK8xKRts57zTxb\\n47yfY6+XXqsVj4Qu9ymvSKg4FzcX3lHUzxQpnjpmeF5G6NP53ISCTaHcBGk7l24Q\\nI10ZMW8mpZLZeJnETrNKeJnzijgGBUQCdn9b0qF37YLCCTcm/j+DrJMBA40str3l\\n1WR80ZMDk/EfkP+2zPRqtPRunj2VoivYX+2acQ0B88Ez52fWQs/0bYDoHUza+bsh\\nzf+t8X6UNkxPzHRAm9spLWD0U+UV3HlM5+1IyrqdRMxlU9SRX37XDz6RUSUVUL6s\\nyxJinp+hOPt+IdievLS/CrXy8s9LfvmwI/OCjHBLgv9RdeZsA6oYRwGQ9qX2ovXX\\nJV6zgOysBfrZ6kmmqXsc2PmEPgJOl97V/6VpuQVS9C+Pl840VqffMF0z+uG48Ues\\nCXiMqw3uunex+8Tdw70T3MwMfDddE5PjmSm/yI3m/0xgqZdDiXebILMA3dlLOpqU\\npdkQ8VlruTD/AaAYOht2dlFj9g84Vw5Hm2xu4B/AnEOgby8=\\n-----END CERTIFICATE-----\",\r\n  \"clientName\": \"clientTest\"\r\n}"
 				},
 				"url": {
-					"raw": "https://preprod.mw.autenticacao.gov.pt/SCAPSignatureService/signHashAuthorization",
+					"raw": "https://preprod.scap.autenticacao.gov.pt/SCAPSignatureService/signHashAuthorization",
 					"protocol": "https",
 					"host": [
 						"preprod",
@@ -273,7 +273,7 @@
 					"raw": "{\r\n  \"processId\": \"7faad8d2-7de8-afc9-a5a5-1a3595ce3436\",\r\n  \"credentialId\": \"541a0f53-34b5-4113-9260-64fef73cb700\",\r\n  \"totp\": \"987123\",\r\n  \"sad\": \"57d47010-e277-4d6b-94b8-3b332fee4041\",\r\n  \"transactionId\": \"1\",\r\n  \"hashesToSign\": [\r\n    \"MDEwDQYJYIZIAWUDBAIBBQAEILxyF6HpbAe+ITsaHatiy9nRQtNabZzTNQp6Agn+5MrC\",\r\n    \"MDEwDQYJYIZIAWUDBAIBBQAEILxyF6HpbAe+ITsaHatiy9nRQtNabZzTNQp6Agn+5MrC\"\r\n  ],\r\n  \"clientName\": \"clientTest\"\r\n}"
 				},
 				"url": {
-					"raw": "https://preprod.mw.autenticacao.gov.pt/SCAPSignatureService/signHash",
+					"raw": "https://preprod.scap.autenticacao.gov.pt/SCAPSignatureService/signHash",
 					"protocol": "https",
 					"host": [
 						"preprod",
@@ -321,7 +321,7 @@
 					"raw": "{\r\n  \"sad\": \"57d47010-e277-4d6b-94b8-3b332fee4041\",\r\n  \"processId\": \"7faad8d2-7de8-afc9-a5a5-1a3595ce3436\",\r\n  \"transactionId\": \"1\"\r\n}"
 				},
 				"url": {
-					"raw": "https://preprod.mw.autenticacao.gov.pt/SCAPSignatureService/getSignHashResult",
+					"raw": "https://preprod.scap.autenticacao.gov.pt/SCAPSignatureService/getSignHashResult",
 					"protocol": "https",
 					"host": [
 						"preprod",
